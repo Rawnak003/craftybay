@@ -21,11 +21,6 @@ class _CraftyBayState extends State<CraftyBay> {
       initialRoute: AppRoutesName.splash,
       onGenerateRoute: AppRouteConfigs.generateRoute,
       theme: AppTheme.lightThemeData,
-      home: const Scaffold(
-        body: Center(
-          child: Text('Crafty Bay'),
-        ),
-      ),
     );
   }
 }

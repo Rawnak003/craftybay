@@ -1,13 +1,47 @@
+import 'package:craftybay/core/app/app_spacing.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/routes/app_route_names.dart';
+import '../../../authentication/presentation/widgets/app_logo_widget.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _moveToNextScreen();
+  }
+
+  Future<void> _moveToNextScreen() async {
+    await Future.delayed(const Duration(seconds: 3));
+    Navigator.pushReplacementNamed(context, AppRoutesName.signIn);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Splash Screen'),
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            children: [
+              Spacer(),
+              AppLogoWidget(),
+              Spacer(),
+              CircularProgressIndicator(),
+              SizedBox(height: AppSpacing.screenHeight(context) * 0.03),
+              Text(
+                'Version 1.0.0',
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
