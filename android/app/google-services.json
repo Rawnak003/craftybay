@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "922662389037",
+    "project_id": "fir-practice-35e53",
+    "storage_bucket": "fir-practice-35e53.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922662389037:android:3f27c91b90c2531bf67fa4",
+        "android_client_info": {
+          "package_name": "com.example.craftybay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd8XiVEPmyOVs-MVO-S01pauWTByKtt3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922662389037:android:533b2add9c49fbf2f67fa4",
+        "android_client_info": {
+          "package_name": "com.example.firebase_practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd8XiVEPmyOVs-MVO-S01pauWTByKtt3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
