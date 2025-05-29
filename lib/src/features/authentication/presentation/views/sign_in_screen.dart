@@ -68,8 +68,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        labelText: 'Email',
-                        hintText: 'Enter your email',
+                        labelText: AppStrings.email,
+                        hintText: AppStrings.emailHint,
                         prefixIcon: Icon(
                           Icons.email,
                           color: AppColor.secondaryColor,
@@ -85,8 +85,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       obscuringCharacter: '*',
                       textInputAction: TextInputAction.done,
                       decoration: InputDecoration(
-                        labelText: 'Password',
-                        hintText: 'Enter your password',
+                        labelText: AppStrings.password,
+                        hintText: AppStrings.passwordHint,
                         prefixIcon: Icon(
                           Icons.lock,
                           color: AppColor.secondaryColor,

@@ -83,8 +83,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        labelText: 'Email',
-                        hintText: 'Enter your email',
+                        labelText: AppStrings.email,
+                        hintText: AppStrings.emailHint,
                         prefixIcon: Icon(Icons.email, color: AppColor.secondaryColor),
                       ),
                       validator: InputValidators.emailValidator,
@@ -96,8 +96,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        labelText: 'First Name',
-                        hintText: 'Enter your first name',
+                        labelText: AppStrings.firstName,
+                        hintText: AppStrings.firstNameHint,
                         prefixIcon: Icon(Icons.person, color: AppColor.secondaryColor),
                       ),
                       validator: (value) => InputValidators.nameValidator('first Name', value),
@@ -109,8 +109,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        labelText: 'Last Name',
-                        hintText: 'Enter your last name',
+                        labelText: AppStrings.lastName,
+                        hintText: AppStrings.lastNameHint,
                         prefixIcon: Icon(Icons.person, color: AppColor.secondaryColor),
                       ),
                       validator: (value) => InputValidators.nameValidator('last Name', value),
@@ -122,8 +122,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        labelText: 'Phone Number',
-                        hintText: 'Enter your phone number',
+                        labelText: AppStrings.phone,
+                        hintText: AppStrings.phoneHint,
                         prefixIcon: Icon(Icons.phone, color: AppColor.secondaryColor),
                       ),
                       validator: InputValidators.phoneValidator,
@@ -135,8 +135,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        labelText: 'City',
-                        hintText: 'Enter your city',
+                        labelText: AppStrings.city,
+                        hintText: AppStrings.cityHint,
                         prefixIcon: Icon(Icons.location_city_outlined, color: AppColor.secondaryColor),
                       ),
                       validator: (value) => InputValidators.nameValidator('city', value),
@@ -150,8 +150,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       maxLines: 2,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(16),
-                        labelText: 'Shipping Address',
-                        hintText: 'Enter your shipping address',
+                        labelText: AppStrings.address,
+                        hintText: AppStrings.addressHint,
                         prefixIcon: Padding(
                           padding: const EdgeInsets.only(bottom: 25),
                           child: Icon(Icons.location_on, color: AppColor.secondaryColor),
@@ -165,8 +165,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: _passwordTEController,
                       textInputAction: TextInputAction.done,
                       decoration: InputDecoration(
-                        labelText: 'Password',
-                        hintText: 'Enter your password',
+                        labelText: AppStrings.password,
+                        hintText: AppStrings.passwordHint,
                         prefixIcon: Icon(Icons.lock, color: AppColor.secondaryColor),
                       ),
                       validator: InputValidators.passwordValidator,
