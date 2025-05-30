@@ -17,6 +17,8 @@ class AppInputDecoration {
         color: AppColor.greyColor,
         fontWeight: FontWeight.w400,
       ),
+      alignLabelWithHint: true,
+      floatingLabelAlignment: FloatingLabelAlignment.start,
     );
   }
 

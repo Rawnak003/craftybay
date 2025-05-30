@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/app/app_spacing.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/constants/strings.dart';
+import '../../../../../core/routes/app_route_names.dart';
 import '../../../../../core/utils/input_validators.dart';
 import '../widgets/app_logo_widget.dart';
 
@@ -22,6 +24,10 @@ class _SignInScreenState extends State<SignInScreen> {
     if (_formKey.currentState!.validate()) {
       // TODO: implement sign in
     }
+  }
+
+  void _onTapSignUp() {
+    Navigator.pushNamed(context, AppRoutesName.signUp);
   }
 
   @override
@@ -52,16 +58,22 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
                     Text(AppStrings.signIn, style: textTheme.headlineMedium),
-                    Text(AppStrings.signInInstruction, style: textTheme.titleMedium,),
+                    Text(
+                      AppStrings.signInInstruction,
+                      style: textTheme.titleMedium,
+                    ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.03),
                     TextFormField(
                       controller: _emailTEController,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        labelText: 'Email',
-                        hintText: 'Enter your email',
-                        prefixIcon: Icon(Icons.email, color: AppColor.secondaryColor),
+                        labelText: AppStrings.email,
+                        hintText: AppStrings.emailHint,
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: AppColor.secondaryColor,
+                        ),
                       ),
                       validator: InputValidators.emailValidator,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -73,15 +85,21 @@ class _SignInScreenState extends State<SignInScreen> {
                       obscuringCharacter: '*',
                       textInputAction: TextInputAction.done,
                       decoration: InputDecoration(
-                        labelText: 'Password',
-                        hintText: 'Enter your password',
-                        prefixIcon: Icon(Icons.lock, color: AppColor.secondaryColor),
+                        labelText: AppStrings.password,
+                        hintText: AppStrings.passwordHint,
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: AppColor.secondaryColor,
+                        ),
                         suffixIcon: IconButton(
                           icon: Icon(
                             obscurePassword
                                 ? Icons.visibility
                                 : Icons.visibility_off_outlined,
-                            color: obscurePassword ? AppColor.secondaryColor : AppColor.greyColor,
+                            color:
+                                obscurePassword
+                                    ? AppColor.secondaryColor
+                                    : AppColor.greyColor,
                           ),
                           onPressed: () {
                             setState(() {
@@ -93,11 +111,43 @@ class _SignInScreenState extends State<SignInScreen> {
                       validator: InputValidators.passwordValidator,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
-                    SizedBox(height: AppSpacing.screenHeight(context) * 0.04),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          AppStrings.forgotPassword,
+                          style: textTheme.bodyLarge?.copyWith(
+                            color: AppColor.themeColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
                     ElevatedButton(
                       onPressed: _onTapSignIn,
-                      child: Text(
-                        AppStrings.signIn,
+                      child: Text(AppStrings.signIn),
+                    ),
+                    SizedBox(height: AppSpacing.screenHeight(context) * 0.05),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: AppStrings.dontHaveAccount,
+                            style: textTheme.bodyLarge,
+                          ),
+                          TextSpan(
+                            text: AppStrings.signUp,
+                            style: textTheme.bodyLarge?.copyWith(
+                              color: AppColor.themeColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            recognizer:
+                                TapGestureRecognizer()
+                                  ..onTap = () => _onTapSignUp(),
+                          ),
+                        ],
                       ),
                     ),
                   ],
