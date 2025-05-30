@@ -9,6 +9,16 @@ class AppTextTheme {
         fontSize: 28,
         fontWeight: FontWeight.w600,
       ),
+      headlineSmall: TextStyle(
+        color: AppColor.blackColor,
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+      ),
+      titleLarge: TextStyle(
+        color: AppColor.blackColor,
+        fontSize: 22,
+        fontWeight: FontWeight.w400,
+      ),
       titleMedium: TextStyle(
         color: AppColor.greyColor,
         fontSize: 16,

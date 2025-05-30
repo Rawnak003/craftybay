@@ -21,5 +21,10 @@ class AppStrings {
   static const String phoneHint = 'Enter your phone number';
   static const String addressHint = 'Enter your address';
   static const String cityHint = 'Enter your city';
-
+  static const String home = 'Home';
+  static const String search = 'Search';
+  static const String categories = 'Categories';
+  static const String popular = 'Popular';
+  static const String special = 'Specials';
+  static const String newArrivals = 'New Arrivals';
 }
