@@ -25,6 +25,7 @@ class SearchBarWidget extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(borderSide: BorderSide.none,),
+        focusedBorder: OutlineInputBorder(borderSide: BorderSide.none,),
         errorBorder: OutlineInputBorder(borderSide: BorderSide.none),
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12,),
       ),
