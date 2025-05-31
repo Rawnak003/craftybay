@@ -5,6 +5,7 @@ import 'package:craftybay/src/features/onboarding/presentation/views/wishlist_sc
 import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/colors.dart';
+import '../../../../../core/constants/strings.dart';
 
 class ParentScreen extends StatefulWidget {
   const ParentScreen({super.key});
@@ -67,10 +68,10 @@ class _ParentScreenState extends State<ParentScreen> {
               },
               backgroundColor: AppColor.whiteColor,
               destinations: [
-                _buildNavDestination(Icons.home_outlined, 'Home', 0),
-                _buildNavDestination(Icons.grid_view_outlined, 'Categories', 1),
-                _buildNavDestination(Icons.shopping_cart_outlined, 'Cart', 2),
-                _buildNavDestination(Icons.bookmark_border_outlined, 'Wishlist', 3),
+                _buildNavDestination(Icons.home_outlined, AppStrings.home, 0),
+                _buildNavDestination(Icons.grid_view_outlined, AppStrings.categories, 1),
+                _buildNavDestination(Icons.shopping_cart_outlined, AppStrings.cart, 2),
+                _buildNavDestination(Icons.bookmark_border_outlined, AppStrings.wishlist, 3),
               ],
             ),
           ),
