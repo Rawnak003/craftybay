@@ -6,4 +6,6 @@ class AppImages {
 
   // Home Screen
   static const String appBarLogoSvg = '$_assetPath/logo_nav.svg';
+  static const String shoeLogoPng = '$_assetPath/shoe.png';
+
 }

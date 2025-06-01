@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/app/app_spacing.dart';
-import '../../../../../core/constants/colors.dart';
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/colors.dart';
+
 
 class CategoryItemWidget extends StatelessWidget {
   const CategoryItemWidget({
@@ -21,7 +22,7 @@ class CategoryItemWidget extends StatelessWidget {
           width: AppSpacing.screenWidth(context) * 0.2,
           height: AppSpacing.screenWidth(context) * 0.2,
           decoration: BoxDecoration(
-            color: AppColor.themeColor.withOpacity(0.15),
+            color: AppColor.categoryBGColor,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
@@ -33,7 +34,8 @@ class CategoryItemWidget extends StatelessWidget {
           ),
         ),
         SizedBox(height: AppSpacing.screenHeight(context) * 0.005),
-        Text(title, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColor.themeColor, fontWeight: FontWeight.w500),),
+        Text(title, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColor.themeColor, fontWeight: FontWeight.w500),
+        ),
       ],
     );
   }

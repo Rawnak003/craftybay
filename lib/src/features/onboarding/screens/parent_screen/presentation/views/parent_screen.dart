@@ -1,11 +1,11 @@
-import 'package:craftybay/src/features/onboarding/presentation/views/cart_screen.dart';
-import 'package:craftybay/src/features/onboarding/presentation/views/categories_screen.dart';
-import 'package:craftybay/src/features/onboarding/presentation/views/home_screen.dart';
-import 'package:craftybay/src/features/onboarding/presentation/views/wishlist_screen.dart';
 import 'package:flutter/material.dart';
+import '../../../../../../../core/constants/colors.dart';
+import '../../../../../../../core/constants/strings.dart';
+import '../../../cart_screen/presentation/views/cart_screen.dart';
+import '../../../category_screen/presentation/views/categories_screen.dart';
+import '../../../home/presentation/views/home_screen.dart';
+import '../../../wishlist_screen/presentation/views/wishlist_screen.dart';
 
-import '../../../../../core/constants/colors.dart';
-import '../../../../../core/constants/strings.dart';
 
 class ParentScreen extends StatefulWidget {
   const ParentScreen({super.key});
@@ -39,9 +39,8 @@ class _ParentScreenState extends State<ParentScreen> {
             boxShadow: [
               BoxShadow(
                 color: AppColor.lightGreyColor,
-                offset: Offset(0, -3),
                 blurRadius: 1,
-                spreadRadius: 1,
+                spreadRadius: 1.5,
               ),
             ],
           ),

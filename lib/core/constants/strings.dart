@@ -39,6 +39,5 @@ class AppStrings {
   static const String fashion = 'Fashion';
   static const String furniture = 'Furniture';
   static const String sport = 'Sport';
-
-
+  static const String seeAll = 'See All';
 }

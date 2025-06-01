@@ -34,6 +34,16 @@ class AppTextTheme {
         fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
+      bodyMedium: TextStyle(
+        color: AppColor.blackColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
+      bodySmall: TextStyle(
+        color: AppColor.blackColor,
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+      ),
     );
   }
 }

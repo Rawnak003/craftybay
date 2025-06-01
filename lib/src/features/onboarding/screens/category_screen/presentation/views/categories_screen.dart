@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../core/constants/strings.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -10,6 +11,10 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppStrings.categories),
+      ),
+    );
   }
 }
