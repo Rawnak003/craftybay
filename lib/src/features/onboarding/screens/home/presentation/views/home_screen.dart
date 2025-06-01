@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../../../../core/app/app_spacing.dart';
 import '../../../../../../../core/constants/colors.dart';
 import '../../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/category_item_widget.dart';
 import '../../../../common_widget/product_item_card_widget.dart';
+import '../../../parent_screen/controller/main_bottom_nav_bar_controller.dart';
 import '../widget/custom_home_app_bar.dart';
 import '../widget/home_carousel_slider_widget.dart';
 import '../widget/search_bar_widget.dart';
@@ -30,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: AppSpacing.screenHeight(context) * 0.015),
               HomeCarouselSliderWidget(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.015),
-              _buildSectionHeader(title: AppStrings.categories, onTap: () {}),
+              _buildSectionHeader(title: AppStrings.categories, onTap: () {Get.find<MainBottomNavController>().moveToCategory();}),
               _buildCategoryDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
               _buildSectionHeader(title: AppStrings.popular, onTap: () {}),
@@ -65,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildCategoryDisplay() {
     return SizedBox(
-      height: AppSpacing.screenHeight(context) * 0.12,
+      height: AppSpacing.screenHeight(context) * 0.13,
       child: ListView.separated(
         itemCount: 10,
         scrollDirection: Axis.horizontal,
