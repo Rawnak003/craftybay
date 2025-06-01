@@ -21,5 +21,23 @@ class AppStrings {
   static const String phoneHint = 'Enter your phone number';
   static const String addressHint = 'Enter your address';
   static const String cityHint = 'Enter your city';
-
+  static const String home = 'Home';
+  static const String search = 'Search';
+  static const String categories = 'Categories';
+  static const String popular = 'Popular';
+  static const String special = 'Specials';
+  static const String newArrivals = 'New Arrivals';
+  static const String cart = 'Cart';
+  static const String wishlist = 'Wishlist';
+  static const String checkout = 'Checkout';
+  static const String order = 'Order';
+  static const String profile = 'Profile';
+  static const String logout = 'Logout';
+  static const String settings = 'Settings';
+  static const String about = 'About';
+  static const String electronics = 'Electronics';
+  static const String fashion = 'Fashion';
+  static const String furniture = 'Furniture';
+  static const String sport = 'Sport';
+  static const String seeAll = 'See All';
 }
