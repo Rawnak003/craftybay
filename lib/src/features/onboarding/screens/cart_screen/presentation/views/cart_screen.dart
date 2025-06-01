@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../../core/constants/strings.dart';
+import '../../../../common_widget/custom_app_bar.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -10,6 +13,8 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: CustomAppBar(title: AppStrings.cart),
+    );
   }
 }

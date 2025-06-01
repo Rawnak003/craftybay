@@ -4,7 +4,7 @@ import '../../../../../../../core/constants/colors.dart';
 import '../../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/category_item_widget.dart';
 import '../../../../common_widget/product_item_card_widget.dart';
-import '../widget/custom_app_bar.dart';
+import '../widget/custom_home_app_bar.dart';
 import '../widget/home_carousel_slider_widget.dart';
 import '../widget/search_bar_widget.dart';
 
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomHomeAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
