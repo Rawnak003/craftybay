@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../../core/constants/strings.dart';
+import '../../../../common_widget/custom_app_bar.dart';
+
 class WishlistScreen extends StatefulWidget {
   const WishlistScreen({super.key});
 
@@ -10,6 +13,8 @@ class WishlistScreen extends StatefulWidget {
 class _WishlistScreenState extends State<WishlistScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: CustomAppBar(title: AppStrings.wishlist),
+    );
   }
 }
