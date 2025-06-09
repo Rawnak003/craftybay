@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../core/app/app_spacing.dart';
 import '../../../common_widget/custom_app_bar.dart';
@@ -16,19 +17,23 @@ class ProductListScreen extends StatefulWidget {
 class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: widget.categoryTitle),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding * 0.5),
-        child: GridView.builder(
-          itemCount: 30,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 16,
+    return SafeArea(
+      child: Scaffold(
+        appBar: CustomAppBar(title: widget.categoryTitle, onTap: () {
+          Get.back();
+        },),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding * 0.5),
+          child: GridView.builder(
+            itemCount: 30,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              mainAxisSpacing: 16,
+            ),
+            itemBuilder: (context, index) {
+              return FittedBox(child: ProductItemCardWidget());
+            },
           ),
-          itemBuilder: (context, index) {
-            return FittedBox(child: ProductItemCardWidget());
-          },
         ),
       ),
     );

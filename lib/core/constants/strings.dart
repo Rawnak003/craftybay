@@ -40,4 +40,5 @@ class AppStrings {
   static const String furniture = 'Furniture';
   static const String sport = 'Sport';
   static const String seeAll = 'See All';
+  static const String productDetails = 'Product Details';
 }

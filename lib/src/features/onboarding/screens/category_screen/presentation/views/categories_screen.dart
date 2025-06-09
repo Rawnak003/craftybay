@@ -22,7 +22,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         Get.find<MainBottomNavController>().backToHome();
       },
       child: Scaffold(
-        appBar: CustomAppBar(title: AppStrings.categories),
+        appBar: CustomAppBar(
+          title: AppStrings.categories,
+          onTap: () {
+            Get.find<MainBottomNavController>().backToHome();
+          },
+        ),
         body: Padding(
           padding: const EdgeInsets.all(AppSpacing.pagePadding),
           child: GridView.builder(
@@ -33,7 +38,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               crossAxisSpacing: 2,
             ),
             itemBuilder: (context, index) {
-              return FittedBox(child: CategoryItemWidget(iconData: Icons.desktop_mac_sharp, title: AppStrings.electronics));
+              return FittedBox(
+                child: CategoryItemWidget(
+                  iconData: Icons.desktop_mac_sharp,
+                  title: AppStrings.electronics,
+                ),
+              );
             },
           ),
         ),

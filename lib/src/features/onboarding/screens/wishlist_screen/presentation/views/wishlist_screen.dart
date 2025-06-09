@@ -23,7 +23,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
         Get.find<MainBottomNavController>().backToHome();
       },
       child: Scaffold(
-        appBar: CustomAppBar(title: AppStrings.wishlist),
+        appBar: CustomAppBar(title: AppStrings.wishlist, onTap: () {
+          Get.find<MainBottomNavController>().backToHome();
+        },),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding * 0.5, vertical: AppSpacing.verticalPadding),
           child: GridView.builder(

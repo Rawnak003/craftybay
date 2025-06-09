@@ -5,4 +5,5 @@ class AppRoutesName {
   static const String forgetPassword = '/forget-password';
   static const String parent = '/main';
   static const String productList = '/product-list';
+  static const String product = '/product';
 }

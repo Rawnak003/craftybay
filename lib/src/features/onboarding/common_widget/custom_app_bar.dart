@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../screens/parent_screen/controller/main_bottom_nav_bar_controller.dart';
+
+import '../../../../core/constants/colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title, required this.onTap, this.backgroundColor});
 
   final String title;
+  final VoidCallback onTap;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: backgroundColor ?? AppColor.whiteColor,
       automaticallyImplyLeading: false,
       title: Row(
         children: [
           IconButton(
             icon: Icon(Icons.arrow_back_ios, size: 22),
-            onPressed: () => Get.find<MainBottomNavController>().backToHome(),
+            onPressed: onTap,
           ),
           Text(
             title,

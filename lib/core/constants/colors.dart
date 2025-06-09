@@ -21,6 +21,7 @@ class AppColor{
   static const Color cyanColor = Color(0xFF00FFFF);
 
 
+  static const Color transparentColor = Colors.transparent;
 
   static MaterialColor getMaterialColor(Color color) {
     final int red = color.r.toInt();
