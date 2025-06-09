@@ -1,3 +1,4 @@
+import 'package:craftybay/core/app/app_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../../core/constants/strings.dart';
@@ -23,8 +24,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       child: Scaffold(
         appBar: CustomAppBar(title: AppStrings.categories),
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: GridView.builder(itemCount: 50,
+          padding: const EdgeInsets.all(AppSpacing.pagePadding),
+          child: GridView.builder(
+            itemCount: 50,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
               mainAxisSpacing: 28,
