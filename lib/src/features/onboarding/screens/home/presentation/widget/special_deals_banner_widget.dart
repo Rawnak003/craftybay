@@ -4,8 +4,6 @@ import '../../../../../../../core/app/app_spacing.dart';
 import '../../../../../../../core/constants/colors.dart';
 import '../../../../../../../core/constants/images.dart';
 
-
-
 class SpecialDealsBannerWidget extends StatelessWidget {
   const SpecialDealsBannerWidget({super.key});
 

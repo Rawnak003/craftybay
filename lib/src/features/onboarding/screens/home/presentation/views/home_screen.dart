@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: CustomHomeAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding, vertical: AppSpacing.verticalPadding),
           child: Column(
             children: [
               SearchBarWidget(),
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildCategoryDisplay() {
     return SizedBox(
-      height: AppSpacing.screenHeight(context) * 0.13,
+      height: AppSpacing.screenHeight(context) * 0.15,
       child: ListView.separated(
         itemCount: 10,
         scrollDirection: Axis.horizontal,

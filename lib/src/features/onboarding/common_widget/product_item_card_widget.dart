@@ -4,11 +4,8 @@ import '../../../../core/app/app_spacing.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/images.dart';
 
-
 class ProductItemCardWidget extends StatelessWidget {
-  const ProductItemCardWidget({
-    super.key,
-  });
+  const ProductItemCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +26,7 @@ class ProductItemCardWidget extends StatelessWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Image.asset(
-                  AppImages.shoeLogoPng,
-                  fit: BoxFit.contain,
-                ),
+                child: Image.asset(AppImages.shoeLogoPng, fit: BoxFit.contain),
               ),
             ),
             Padding(
@@ -42,26 +36,35 @@ class ProductItemCardWidget extends StatelessWidget {
                   Text(
                     'Nike Air Max 270',
                     style: Theme.of(context).textTheme.bodySmall,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: AppSpacing.screenHeight(context) * 0.0025),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         '\$ 99.99',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColor.themeColor,fontSize: 13, fontWeight: FontWeight.bold, letterSpacing: 0),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: AppColor.themeColor,
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0,
+                        ),
                       ),
-                      Spacer(),
-                      Icon(
-                        Icons.star,
-                        color: AppColor.yellowColor,
-                        size: 12,
+                      Wrap(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: AppColor.yellowColor,
+                            size: 12,
+                          ),
+                          Text(
+                            '4.5',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ],
                       ),
-                      Text(
-                        '4.5',
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                      Spacer(),
                       GestureDetector(
                         onTap: () {},
                         child: Container(
@@ -77,12 +80,12 @@ class ProductItemCardWidget extends StatelessWidget {
                             size: 16,
                           ),
                         ),
-                      )
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
