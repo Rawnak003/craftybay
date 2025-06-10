@@ -41,4 +41,10 @@ class AppStrings {
   static const String sport = 'Sport';
   static const String seeAll = 'See All';
   static const String productDetails = 'Product Details';
+  static const String addToCart = 'Add to Cart';
+  static const String reviews = 'Reviews';
+  static const String color = 'Color';
+  static const String size = 'Size';
+  static const String description = 'Description';
+
 }

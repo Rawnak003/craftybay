@@ -5,6 +5,7 @@ import '../../../../core/app/app_spacing.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/images.dart';
 import '../../../../core/routes/app_route_names.dart';
+import 'custom_action_button.dart';
 
 class ProductItemCardWidget extends StatelessWidget {
   const ProductItemCardWidget({super.key});
@@ -71,22 +72,7 @@ class ProductItemCardWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            width: AppSpacing.screenWidth(context) * 0.05,
-                            height: AppSpacing.screenWidth(context) * 0.05,
-                            decoration: BoxDecoration(
-                              color: AppColor.themeColor,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Icon(
-                              Icons.favorite_border,
-                              color: AppColor.whiteColor,
-                              size: 16,
-                            ),
-                          ),
-                        ),
+                        CustomActionButton(iconData: Icons.favorite_border),
                       ],
                     ),
                   ],
@@ -99,3 +85,4 @@ class ProductItemCardWidget extends StatelessWidget {
     );
   }
 }
+

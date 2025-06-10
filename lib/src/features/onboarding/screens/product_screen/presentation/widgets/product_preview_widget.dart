@@ -69,10 +69,11 @@ class ProductPreviewWidget extends StatelessWidget {
                           Container(
                             width: AppSpacing.screenWidth(context) * 0.03,
                             height: AppSpacing.screenWidth(context) * 0.03,
-                            margin: EdgeInsets.symmetric(horizontal: 2),
+                            margin: EdgeInsets.symmetric(horizontal: 4),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: index == i ? AppColor.themeColor : AppColor.whiteColor,
+                              color: index == i ? AppColor.themeColor : AppColor
+                                  .whiteColor,
                             ),
                           ),
                       ],
