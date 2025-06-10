@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../core/app/app_spacing.dart';
 import '../../../../../../core/constants/colors.dart';
@@ -16,7 +17,7 @@ class CategoryItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, AppRoutesName.productList, arguments: title),
+      onTap: () => Get.toNamed(AppRoutesName.productList, arguments: title),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,

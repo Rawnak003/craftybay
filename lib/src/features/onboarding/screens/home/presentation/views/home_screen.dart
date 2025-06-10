@@ -6,6 +6,7 @@ import '../../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/category_item_widget.dart';
 import '../../../../common_widget/product_item_card_widget.dart';
 import '../../../parent_screen/controller/main_bottom_nav_bar_controller.dart';
+import '../../controller/home_nav_controller.dart';
 import '../widget/custom_home_app_bar.dart';
 import '../widget/home_carousel_slider_widget.dart';
 import '../widget/search_bar_widget.dart';
@@ -18,9 +19,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
+  MainBottomNavController mainBottomNavController = Get.find<MainBottomNavController>();
+  HomeNavController homeNavController = Get.find<HomeNavController>();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: CustomHomeAppBar(),
       body: SingleChildScrollView(
@@ -32,16 +35,16 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: AppSpacing.screenHeight(context) * 0.015),
               HomeCarouselSliderWidget(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.015),
-              _buildSectionHeader(title: AppStrings.categories, onTap: () {Get.find<MainBottomNavController>().moveToCategory();}),
+              _buildSectionHeader(title: AppStrings.categories, onTap: () {mainBottomNavController.moveToCategory();}),
               _buildCategoryDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-              _buildSectionHeader(title: AppStrings.popular, onTap: () {}),
+              _buildSectionHeader(title: AppStrings.popular, onTap: () {homeNavController.gotoPopular();}),
               _buildProductDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-              _buildSectionHeader(title: AppStrings.special, onTap: () {}),
+              _buildSectionHeader(title: AppStrings.special, onTap: () {homeNavController.gotoSpecial();}),
               _buildProductDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-              _buildSectionHeader(title: AppStrings.newArrivals, onTap: () {}),
+              _buildSectionHeader(title: AppStrings.newArrivals, onTap: () {homeNavController.gotoNewArrivals();}),
               _buildProductDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
             ],
