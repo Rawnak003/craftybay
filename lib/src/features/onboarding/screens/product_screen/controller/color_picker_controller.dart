@@ -17,6 +17,4 @@ class ColorPickerController extends GetxController {
   void selectColor(int index) {
     selectedIndex.value = index;
   }
-
-  Color get selectedColor => colorOptions[selectedIndex.value];
 }

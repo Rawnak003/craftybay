@@ -47,4 +47,9 @@ class AppStrings {
   static const String size = 'Size';
   static const String description = 'Description';
 
+
+
+
+  static const String shoeDescription = 'Engineered for lifestyle comfort with performance-inspired design, the Nike Air Max 270 features the tallest Air unit in the heel at 32mm—delivering unrivaled impact absorption and everyday cushioning. The dual-density foam midsole works in tandem with the Max Air unit to ensure smooth transitions and all-day support. Its engineered mesh upper enhances breathability while providing a structured, adaptive fit. Inspired by the heritage of the Air Max 180 and 93, the 270 stands out with its sculpted silhouette, asymmetrical lacing system, and bold branding. Perfect for urban movement, the Air Max 270 is a fusion of innovation and street-ready style.';
+
 }

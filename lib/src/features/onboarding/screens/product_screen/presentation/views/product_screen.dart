@@ -1,12 +1,14 @@
-import 'package:craftybay/src/features/onboarding/common_widget/custom_action_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/app/app_spacing.dart';
 import '../../../../../../../core/constants/colors.dart';
 import '../../../../../../../core/constants/strings.dart';
+import '../../../../common_widget/custom_action_button.dart';
+import '../../../../common_widget/custom_bottom_button.dart';
 import '../../../../common_widget/item_counter_widget.dart';
 import '../widgets/color_picker_widget.dart';
 import '../widgets/product_preview_widget.dart';
+import '../widgets/size_picker_widget.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
@@ -24,27 +26,39 @@ class _ProductScreenState extends State<ProductScreen> {
         body: Column(
           children: [
             ProductPreviewWidget(currentSlider: _currentSlider),
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.pagePadding),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildHeadingRow(context),
-                    SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-                    Text(AppStrings.color, style: Theme.of(context,).textTheme.titleLarge?.copyWith(fontSize: 18)),
-                    SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-                    ColorPickerWidget(),
-                    SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-                    Text(AppStrings.size, style: Theme.of(context,).textTheme.titleLarge?.copyWith(fontSize: 18)),
-                    SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-
-                    SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-                    Text(AppStrings.description, style: Theme.of(context,).textTheme.titleLarge?.copyWith(fontSize: 18)),
-                    SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
-
-                  ],
+            SizedBox(
+              height: AppSpacing.screenHeight(context) * 0.55,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(AppSpacing.pagePadding),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildHeadingRow(context),
+                      SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
+                      Text(AppStrings.color, style: Theme.of(context,).textTheme.titleLarge?.copyWith(fontSize: 20, fontWeight: FontWeight.w500)),
+                      SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
+                      ColorPickerWidget(),
+                      SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
+                      Text(AppStrings.size, style: Theme.of(context,).textTheme.titleLarge?.copyWith(fontSize: 20, fontWeight: FontWeight.w500)),
+                      SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
+                      SizePickerWidget(),
+                      SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
+                      Text(AppStrings.description, style: Theme.of(context,).textTheme.titleLarge?.copyWith(fontSize: 20, fontWeight: FontWeight.w500)),
+                      SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
+                      Text(AppStrings.shoeDescription, textAlign: TextAlign.justify),
+                    ],
+                  ),
                 ),
+              ),
+            ),
+            Spacer(),
+            CustomBottomButton(
+              title: 'Price',
+              subtext: '\$ 1000',
+              button: ElevatedButton(
+                onPressed: () {},
+                child: Text(AppStrings.addToCart),
               ),
             ),
           ],
@@ -69,7 +83,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   'Nike Air Max 270',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
-                  style: Theme.of(context,).textTheme.titleLarge?.copyWith(fontSize: 20),
+                  style: Theme.of(context,).textTheme.titleLarge,
                 ),
                 Row(
                   children: [

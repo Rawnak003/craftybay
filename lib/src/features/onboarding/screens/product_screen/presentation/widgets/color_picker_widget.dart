@@ -1,7 +1,7 @@
-import 'package:craftybay/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../../core/constants/colors.dart';
 import '../../controller/color_picker_controller.dart';
 
 class ColorPickerWidget extends StatelessWidget {
