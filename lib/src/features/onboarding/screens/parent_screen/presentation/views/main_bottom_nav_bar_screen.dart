@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../../core/constants/colors.dart';
-import '../../../../../../../core/constants/strings.dart';
+import '../../../../../../core/constants/colors.dart';
+import '../../../../../../core/constants/strings.dart';
 import '../../../cart_screen/presentation/views/cart_screen.dart';
 import '../../../category_screen/presentation/views/categories_screen.dart';
 import '../../../home/presentation/views/home_screen.dart';

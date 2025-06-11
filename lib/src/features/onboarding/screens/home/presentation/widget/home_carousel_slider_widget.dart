@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import '../../../../../../../core/app/app_spacing.dart';
-import '../../../../../../../core/constants/colors.dart';
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/colors.dart';
 import 'special_deals_banner_widget.dart';
 
 class HomeCarouselSliderWidget extends StatefulWidget {

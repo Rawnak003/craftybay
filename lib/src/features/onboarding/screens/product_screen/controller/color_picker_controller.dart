@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/constants/colors.dart';
+import '../../../../../core/constants/colors.dart';
+
 
 class ColorPickerController extends GetxController {
   final List<Color> colorOptions = [

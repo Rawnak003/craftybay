@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/app/app_spacing.dart';
-import '../../../../core/constants/colors.dart';
+import '../../../core/app/app_spacing.dart';
+import '../../../core/constants/colors.dart';
 
 class CustomActionButton extends StatelessWidget {
   const CustomActionButton({
@@ -17,8 +17,8 @@ class CustomActionButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: AppSpacing.screenWidth(context) * 0.05,
-        height: AppSpacing.screenWidth(context) * 0.05,
+        width: AppSpacing.screenWidth(context) * 0.06,
+        height: AppSpacing.screenWidth(context) * 0.06,
         decoration: BoxDecoration(
           color: backgroundColor ?? AppColor.themeColor,
           borderRadius: BorderRadius.circular(5),

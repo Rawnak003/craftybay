@@ -1,7 +1,9 @@
-import 'package:craftybay/core/app/app_spacing.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../../core/constants/strings.dart';
+
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/category_item_widget.dart';
 import '../../../../common_widget/custom_app_bar.dart';
 import '../../../parent_screen/controller/main_bottom_nav_bar_controller.dart';

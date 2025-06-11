@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../../../core/constants/colors.dart';
-import '../../../../../../../core/constants/strings.dart';
 
-
+import '../../../../../../core/constants/colors.dart';
+import '../../../../../../core/constants/strings.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({

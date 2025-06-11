@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/colors.dart';
+import '../../../core/constants/colors.dart';
 import 'custom_action_button.dart';
 
 class ItemCounterWidget extends StatelessWidget {
