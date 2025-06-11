@@ -1,10 +1,10 @@
-import 'package:craftybay/core/app/controller_binder.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../constants/strings.dart';
 import '../routes/app_route_configs.dart';
 import '../routes/app_route_names.dart';
 import 'app_theme.dart';
+import 'controller_binder.dart';
 
 
 class CraftyBay extends StatefulWidget {

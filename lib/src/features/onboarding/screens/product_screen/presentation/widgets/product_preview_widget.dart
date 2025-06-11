@@ -2,10 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../core/app/app_spacing.dart';
-import '../../../../../../../core/constants/colors.dart';
-import '../../../../../../../core/constants/images.dart';
-import '../../../../../../../core/constants/strings.dart';
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/colors.dart';
+import '../../../../../../core/constants/images.dart';
+import '../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/custom_app_bar.dart';
 
 class ProductPreviewWidget extends StatelessWidget {

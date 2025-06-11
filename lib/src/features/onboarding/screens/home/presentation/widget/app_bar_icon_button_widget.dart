@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../../../../../core/app/app_spacing.dart';
-import '../../../../../../../core/constants/colors.dart';
+
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/colors.dart';
 
 class AppBarIconButtonWidget extends StatelessWidget {
   const AppBarIconButtonWidget({
-    super.key, required this.onTap, required this.iconData, this.paddingRight,
+    super.key, this.onTap, required this.iconData, this.paddingRight,
   });
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final IconData iconData;
   final double? paddingRight;
   @override

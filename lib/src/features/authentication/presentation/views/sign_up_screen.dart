@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/app/app_spacing.dart';
-import '../../../../../core/constants/colors.dart';
-import '../../../../../core/constants/strings.dart';
-import '../../../../../core/routes/app_route_names.dart';
-import '../../../../../core/utils/input_validators.dart';
+import '../../../../core/app/app_spacing.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../core/constants/strings.dart';
+import '../../../../core/routes/app_route_names.dart';
+import '../../../../core/utils/input_validators.dart';
 import '../widgets/app_logo_widget.dart';
 
 class SignUpScreen extends StatefulWidget {

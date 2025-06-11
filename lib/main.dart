@@ -1,9 +1,9 @@
 import 'dart:ui';
-import 'package:craftybay/core/app/app.dart';
+import 'package:craftybay/src/core/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
-import 'core/firebase_options.dart';
+import 'src/core/app/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

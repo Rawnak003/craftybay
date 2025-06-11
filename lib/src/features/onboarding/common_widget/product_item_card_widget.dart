@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../core/app/app_spacing.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/images.dart';
-import '../../../../core/routes/app_route_names.dart';
+import '../../../core/app/app_spacing.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/images.dart';
+import '../../../core/routes/app_route_names.dart';
 import 'custom_action_button.dart';
 
 class ProductItemCardWidget extends StatelessWidget {
@@ -51,7 +50,7 @@ class ProductItemCardWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '\$ 99.99',
+                          '\$99.99',
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: AppColor.themeColor,
                             fontSize: 13,

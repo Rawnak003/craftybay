@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../../../core/constants/strings.dart';
+import '../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/custom_app_bar.dart';
 
 class CartScreen extends StatefulWidget {

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../../../../../../../core/app/app_spacing.dart';
-import '../../../../../../../core/constants/colors.dart';
-import '../../../../../../../core/constants/strings.dart';
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/colors.dart';
+import '../../../../../../core/constants/strings.dart';
+import '../../../../../../core/routes/app_route_names.dart';
 import '../../../../common_widget/custom_action_button.dart';
 import '../../../../common_widget/custom_bottom_button.dart';
 import '../../../../common_widget/item_counter_widget.dart';
@@ -94,7 +96,9 @@ class _ProductScreenState extends State<ProductScreen> {
                     ),
                     Spacer(),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(AppRoutesName.reviews);
+                      },
                       child: Text(
                         AppStrings.reviews, style: Theme.of(context,).textTheme.titleMedium?.copyWith(fontSize: 18, color: AppColor.themeColor,),
                       ),

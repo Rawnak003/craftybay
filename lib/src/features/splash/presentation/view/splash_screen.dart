@@ -1,6 +1,7 @@
-import 'package:craftybay/core/app/app_spacing.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/routes/app_route_names.dart';
+import 'package:get/get.dart';
+import '../../../../core/app/app_spacing.dart';
+import '../../../../core/routes/app_route_names.dart';
 import '../../../authentication/presentation/widgets/app_logo_widget.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _moveToHomeScreen() async {
     await Future.delayed(const Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, AppRoutesName.parent);
+    Get.offAndToNamed(AppRoutesName.parent);
   }
 
   @override

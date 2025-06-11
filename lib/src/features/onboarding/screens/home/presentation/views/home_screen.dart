@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../../core/app/app_spacing.dart';
-import '../../../../../../../core/constants/colors.dart';
-import '../../../../../../../core/constants/strings.dart';
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/colors.dart';
+import '../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/category_item_widget.dart';
 import '../../../../common_widget/product_item_card_widget.dart';
 import '../../../parent_screen/controller/main_bottom_nav_bar_controller.dart';

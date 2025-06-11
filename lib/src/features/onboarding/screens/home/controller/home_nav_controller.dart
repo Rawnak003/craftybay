@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
-
-import '../../../../../../core/constants/strings.dart';
-import '../../../../../../core/routes/app_route_names.dart';
+import '../../../../../core/constants/strings.dart';
+import '../../../../../core/routes/app_route_names.dart';
 
 class HomeNavController extends GetxController {
   void gotoPopular() {

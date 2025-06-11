@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../core/app/app_spacing.dart';
 import '../../../common_widget/custom_app_bar.dart';
 import '../../../common_widget/product_item_card_widget.dart';
 
@@ -23,12 +22,14 @@ class _ProductListScreenState extends State<ProductListScreen> {
           Get.back();
         },),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding * 0.5),
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding),
           child: GridView.builder(
             itemCount: 30,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 0.7,
             ),
             itemBuilder: (context, index) {
               return FittedBox(child: ProductItemCardWidget());

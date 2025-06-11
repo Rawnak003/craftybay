@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../../../core/app/app_spacing.dart';
-import '../../../../../../core/constants/colors.dart';
-import '../../../../core/routes/app_route_names.dart';
+import '../../../core/app/app_spacing.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/routes/app_route_names.dart';
 
 
 class CategoryItemWidget extends StatelessWidget {

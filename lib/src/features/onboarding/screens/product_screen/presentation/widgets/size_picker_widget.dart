@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../core/constants/colors.dart';
+import '../../../../../../core/constants/colors.dart';
 import '../../controller/size_picker_controller.dart';
 
 class SizePickerWidget extends StatelessWidget {
