@@ -1,5 +1,6 @@
 class AppStrings {
   static const String appName = 'CraftyBay';
+  static const String version = 'Version 1.0.0';
   static const String signIn = 'Sign In';
   static const String signInInstruction = 'Please enter your email & password';
   static const String signUp = 'Sign Up';
@@ -48,7 +49,7 @@ class AppStrings {
   static const String description = 'Description';
   static const String createReview = 'Create Review';
   static const String yourReview = 'Your Review';
-
+  static const String submit = 'Submit';
 
 
 

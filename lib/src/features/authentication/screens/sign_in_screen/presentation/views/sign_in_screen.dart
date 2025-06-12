@@ -1,11 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/app/app_spacing.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/strings.dart';
-import '../../../../core/routes/app_route_names.dart';
-import '../../../../core/utils/input_validators.dart';
-import '../widgets/app_logo_widget.dart';
+import 'package:get/get.dart';
+
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/colors.dart';
+import '../../../../../../core/constants/strings.dart';
+import '../../../../../../core/utils/input_validators.dart';
+import '../../../../common_widgets/app_logo_widget.dart';
+import '../controllers/show_password_controller.dart';
+import '../controllers/sign_in_controller.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -24,10 +27,6 @@ class _SignInScreenState extends State<SignInScreen> {
     if (_formKey.currentState!.validate()) {
       // TODO: implement sign in
     }
-  }
-
-  void _onTapSignUp() {
-    Navigator.pushNamed(context, AppRoutesName.signUp);
   }
 
   @override
@@ -58,10 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
                     Text(AppStrings.signIn, style: textTheme.headlineMedium),
-                    Text(
-                      AppStrings.signInInstruction,
-                      style: textTheme.titleMedium,
-                    ),
+                    Text(AppStrings.signInInstruction, style: textTheme.titleMedium,),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.03),
                     TextFormField(
                       controller: _emailTEController,
@@ -70,51 +66,43 @@ class _SignInScreenState extends State<SignInScreen> {
                       decoration: InputDecoration(
                         labelText: AppStrings.email,
                         hintText: AppStrings.emailHint,
-                        prefixIcon: Icon(
-                          Icons.email,
-                          color: AppColor.secondaryColor,
-                        ),
+                        prefixIcon: Icon(Icons.email,),
                       ),
                       validator: InputValidators.emailValidator,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
-                    TextFormField(
-                      controller: _passwordTEController,
-                      obscureText: obscurePassword,
-                      obscuringCharacter: '*',
-                      textInputAction: TextInputAction.done,
-                      decoration: InputDecoration(
-                        labelText: AppStrings.password,
-                        hintText: AppStrings.passwordHint,
-                        prefixIcon: Icon(
-                          Icons.lock,
-                          color: AppColor.secondaryColor,
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            obscurePassword
-                                ? Icons.visibility
-                                : Icons.visibility_off_outlined,
-                            color:
-                                obscurePassword
-                                    ? AppColor.secondaryColor
-                                    : AppColor.greyColor,
+                    GetBuilder<ShowPasswordController>(
+                      builder: (controller) {
+                        return TextFormField(
+                          controller: _passwordTEController,
+                          obscureText: !controller.showConfirmPassword,
+                          obscuringCharacter: '*',
+                          textInputAction: TextInputAction.done,
+                          decoration: InputDecoration(
+                            labelText: AppStrings.password,
+                            hintText: AppStrings.passwordHint,
+                            prefixIcon: Icon(Icons.lock,),
+                            suffixIcon: IconButton(
+                              icon: Icon(controller.showConfirmPassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off_outlined,
+                                color: controller.showConfirmPassword
+                                        ? AppColor.secondaryColor
+                                        : AppColor.greyColor,
+                              ),
+                              onPressed: controller.toggleConfirmPassword,
+                            ),
                           ),
-                          onPressed: () {
-                            setState(() {
-                              obscurePassword = !obscurePassword;
-                            });
-                          },
-                        ),
-                      ),
-                      validator: InputValidators.passwordValidator,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: InputValidators.passwordValidator,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                        );
+                      }
                     ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {}, //TODO: implement forgot password
                         child: Text(
                           AppStrings.forgotPassword,
                           style: textTheme.bodyLarge?.copyWith(
@@ -145,7 +133,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             recognizer:
                                 TapGestureRecognizer()
-                                  ..onTap = () => _onTapSignUp(),
+                                  ..onTap = () => Get.find<SignInController>().onTapSignUp(),
                           ),
                         ],
                       ),

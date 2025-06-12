@@ -1,6 +1,6 @@
-import 'package:craftybay/src/core/app/app_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../../core/app/app_spacing.dart';
 import '../../../../../../core/constants/strings.dart';
 import '../../../../../../core/utils/input_validators.dart';
 import '../../../../common_widget/custom_app_bar.dart';
@@ -51,7 +51,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                     decoration: InputDecoration(
                       hintText: AppStrings.firstNameHint,
                     ),
-                    validator: (value) => InputValidators.nameValidator('first Name', value),
+                    validator: (value) => InputValidators.nameValidator(AppStrings.firstName, value),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
                   SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
@@ -62,7 +62,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                     decoration: InputDecoration(
                       hintText: AppStrings.lastNameHint,
                     ),
-                    validator: (value) => InputValidators.nameValidator('last Name', value),
+                    validator: (value) => InputValidators.nameValidator(AppStrings.lastName, value),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
                   SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
@@ -75,13 +75,13 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                       hintText: AppStrings.yourReview,
                       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
-                    validator: (value) => InputValidators.nameValidator('your review', value),
+                    validator: (value) => InputValidators.nameValidator(AppStrings.yourReview, value),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
                   SizedBox(height: AppSpacing.screenHeight(context) * 0.04),
                   ElevatedButton(
                     onPressed: _onTapSubmit,
-                    child: Text('Submit'),
+                    child: Text(AppStrings.submit),
                   ),
                 ],
               ),

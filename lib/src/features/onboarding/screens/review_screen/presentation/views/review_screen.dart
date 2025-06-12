@@ -1,4 +1,3 @@
-import 'package:craftybay/src/core/routes/app_route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +7,7 @@ import '../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/custom_app_bar.dart';
 import '../../../../common_widget/custom_bottom_button.dart';
 import '../../data/static data/static_reviews.dart';
+import '../controller/review_screen_controller.dart';
 import '../widgets/review_card_widget.dart';
 
 class ReviewScreen extends StatelessWidget {
@@ -50,13 +50,8 @@ class ReviewScreen extends StatelessWidget {
                     backgroundColor: AppColor.themeColor,
                     shape: CircleBorder(),
                   ),
-                  onPressed: () {
-                    Get.toNamed(AppRoutesName.createReviews);
-                  },
-                  child: Icon(
-                    Icons.add,
-                    size: 24,
-                  ),
+                  onPressed: Get.find<ReviewScreenController>().gotoCreateReview,
+                  child: Icon(Icons.add, size: 24,),
                 ),
               ),
             ),

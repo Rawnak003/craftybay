@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/app/app_spacing.dart';
-import '../../../../core/routes/app_route_names.dart';
-import '../../../authentication/presentation/widgets/app_logo_widget.dart';
+import '../../../../core/constants/strings.dart';
+import '../../../authentication/common_widgets/app_logo_widget.dart';
+import '../controller/splash_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,12 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _moveToHomeScreen();
-  }
-
-  Future<void> _moveToHomeScreen() async {
-    await Future.delayed(const Duration(seconds: 3));
-    Get.offAndToNamed(AppRoutesName.parent);
+    Get.find<SplashController>().moveToHomeScreen();
   }
 
   @override
@@ -37,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
               CircularProgressIndicator(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.03),
               Text(
-                'Version 1.0.0',
+                AppStrings.version,
                 style: Theme.of(context).textTheme.labelLarge,
               ),
             ],

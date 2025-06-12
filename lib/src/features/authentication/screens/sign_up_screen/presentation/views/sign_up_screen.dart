@@ -1,11 +1,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/app/app_spacing.dart';
-import '../../../../core/constants/colors.dart';
-import '../../../../core/constants/strings.dart';
-import '../../../../core/routes/app_route_names.dart';
-import '../../../../core/utils/input_validators.dart';
-import '../widgets/app_logo_widget.dart';
+import 'package:get/get.dart';
+
+import '../../../../../../core/app/app_spacing.dart';
+import '../../../../../../core/constants/colors.dart';
+import '../../../../../../core/constants/strings.dart';
+import '../../../../../../core/utils/input_validators.dart';
+import '../../../../common_widgets/app_logo_widget.dart';
+import '../controllers/sign_up_controller.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -24,22 +26,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void _onTapSignIn() {
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      AppRoutesName.signIn,
-          (pre) => false,
-    );
-  }
-
   void _onTapSignUp() {
     if (_formKey.currentState!.validate()) {
-      // TODO: implement sign in
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        AppRoutesName.signIn,
-            (pre) => false,
-      );
+      // TODO: implement sign up
     }
   }
 
@@ -85,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: InputDecoration(
                         labelText: AppStrings.email,
                         hintText: AppStrings.emailHint,
-                        prefixIcon: Icon(Icons.email, color: AppColor.secondaryColor),
+                        prefixIcon: Icon(Icons.email,),
                       ),
                       validator: InputValidators.emailValidator,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -98,9 +87,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: InputDecoration(
                         labelText: AppStrings.firstName,
                         hintText: AppStrings.firstNameHint,
-                        prefixIcon: Icon(Icons.person, color: AppColor.secondaryColor),
+                        prefixIcon: Icon(Icons.person,),
                       ),
-                      validator: (value) => InputValidators.nameValidator('first Name', value),
+                      validator: (value) => InputValidators.nameValidator(AppStrings.firstName, value),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
@@ -111,9 +100,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: InputDecoration(
                         labelText: AppStrings.lastName,
                         hintText: AppStrings.lastNameHint,
-                        prefixIcon: Icon(Icons.person, color: AppColor.secondaryColor),
+                        prefixIcon: Icon(Icons.person,),
                       ),
-                      validator: (value) => InputValidators.nameValidator('last Name', value),
+                      validator: (value) => InputValidators.nameValidator(AppStrings.lastName, value),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
@@ -124,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: InputDecoration(
                         labelText: AppStrings.phone,
                         hintText: AppStrings.phoneHint,
-                        prefixIcon: Icon(Icons.phone, color: AppColor.secondaryColor),
+                        prefixIcon: Icon(Icons.phone,),
                       ),
                       validator: InputValidators.phoneValidator,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -137,9 +126,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: InputDecoration(
                         labelText: AppStrings.city,
                         hintText: AppStrings.cityHint,
-                        prefixIcon: Icon(Icons.location_city_outlined, color: AppColor.secondaryColor),
+                        prefixIcon: Icon(Icons.location_city_outlined,),
                       ),
-                      validator: (value) => InputValidators.nameValidator('city', value),
+                      validator: (value) => InputValidators.nameValidator(AppStrings.city, value),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
@@ -154,10 +143,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: AppStrings.addressHint,
                         prefixIcon: Padding(
                           padding: const EdgeInsets.only(bottom: 25),
-                          child: Icon(Icons.location_on, color: AppColor.secondaryColor),
+                          child: Icon(Icons.location_on,),
                         ),
                       ),
-                      validator: (value) => InputValidators.nameValidator('shipping address', value),
+                      validator: (value) => InputValidators.nameValidator(AppStrings.address, value),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
@@ -167,7 +156,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       decoration: InputDecoration(
                         labelText: AppStrings.password,
                         hintText: AppStrings.passwordHint,
-                        prefixIcon: Icon(Icons.lock, color: AppColor.secondaryColor),
+                        prefixIcon: Icon(Icons.lock,),
                       ),
                       validator: InputValidators.passwordValidator,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -175,9 +164,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
                     ElevatedButton(
                       onPressed: _onTapSignUp,
-                      child: Text(
-                        AppStrings.signUp,
-                      ),
+                      child: Text(AppStrings.signUp,),
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.04),
                     RichText(
@@ -195,7 +182,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             recognizer:
                             TapGestureRecognizer()
-                              ..onTap = () => _onTapSignIn(),
+                              ..onTap = () => Get.find<SignUpController>().onTapSignIn(),
                           ),
                         ],
                       ),
