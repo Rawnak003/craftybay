@@ -4,7 +4,7 @@ import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/strings.dart';
 import '../../../cart_screen/presentation/views/cart_screen.dart';
 import '../../../category_screen/presentation/views/categories_screen.dart';
-import '../../../home/presentation/views/home_screen.dart';
+import '../../../home_screen/presentation/views/home_screen.dart';
 import '../../../wishlist_screen/presentation/views/wishlist_screen.dart';
 import '../../controller/main_bottom_nav_bar_controller.dart';
 

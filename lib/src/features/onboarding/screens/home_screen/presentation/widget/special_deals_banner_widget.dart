@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../../../../../../core/app/app_spacing.dart';
 import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/images.dart';
+import '../../controller/home_nav_controller.dart';
 
 class SpecialDealsBannerWidget extends StatelessWidget {
   const SpecialDealsBannerWidget({super.key});
@@ -26,7 +27,9 @@ class SpecialDealsBannerWidget extends StatelessWidget {
                 _buildText(context, 'Special Deal'),
                 _buildText(context, 'Save 30%'),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.find<HomeNavController>().gotoProduct();
+                  },
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size.fromWidth(
                       AppSpacing.screenWidth(context) * 0.3,
