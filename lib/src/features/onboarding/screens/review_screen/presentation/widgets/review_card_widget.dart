@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/app/app_spacing.dart';
 import '../../../../../../core/constants/colors.dart';
-import '../../../home/presentation/widget/app_bar_icon_button_widget.dart';
+import '../../../home_screen/presentation/widget/app_bar_icon_button_widget.dart';
 
 class ReviewCardWidget extends StatelessWidget {
   const ReviewCardWidget({

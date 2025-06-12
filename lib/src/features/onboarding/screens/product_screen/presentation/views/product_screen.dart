@@ -28,8 +28,7 @@ class _ProductScreenState extends State<ProductScreen> {
         body: Column(
           children: [
             ProductPreviewWidget(currentSlider: _currentSlider),
-            SizedBox(
-              height: AppSpacing.screenHeight(context) * 0.55,
+            Expanded(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(AppSpacing.pagePadding),
@@ -54,13 +53,15 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
               ),
             ),
-            Spacer(),
             CustomBottomButton(
               title: 'Price',
               subtext: '\$ 1000',
-              button: ElevatedButton(
-                onPressed: () {},
-                child: Text(AppStrings.addToCart),
+              button: SizedBox(
+                width: AppSpacing.screenWidth(context) * 0.3,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(AppStrings.addToCart),
+                ),
               ),
             ),
           ],

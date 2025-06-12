@@ -12,4 +12,8 @@ class HomeNavController extends GetxController {
   void gotoNewArrivals() {
     Get.toNamed(AppRoutesName.productList, arguments: AppStrings.newArrivals);
   }
+
+  void gotoProduct() {
+    Get.toNamed(AppRoutesName.product);
+  }
 }
