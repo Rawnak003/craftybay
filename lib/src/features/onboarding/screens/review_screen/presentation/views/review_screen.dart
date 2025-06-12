@@ -1,3 +1,4 @@
+import 'package:craftybay/src/core/routes/app_route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,8 +50,13 @@ class ReviewScreen extends StatelessWidget {
                     backgroundColor: AppColor.themeColor,
                     shape: CircleBorder(),
                   ),
-                  onPressed: () {},
-                  child: Icon(Icons.add),
+                  onPressed: () {
+                    Get.toNamed(AppRoutesName.createReviews);
+                  },
+                  child: Icon(
+                    Icons.add,
+                    size: 24,
+                  ),
                 ),
               ),
             ),

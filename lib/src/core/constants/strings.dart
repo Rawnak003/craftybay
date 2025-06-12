@@ -46,6 +46,8 @@ class AppStrings {
   static const String color = 'Color';
   static const String size = 'Size';
   static const String description = 'Description';
+  static const String createReview = 'Create Review';
+  static const String yourReview = 'Your Review';
 
 
 
