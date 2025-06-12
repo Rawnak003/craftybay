@@ -7,4 +7,5 @@ class AppRoutesName {
   static const String productList = '/product-list';
   static const String product = '/product-details';
   static const String reviews = '/reviews';
+  static const String createReviews = '/create-reviews';
 }
