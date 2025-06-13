@@ -6,17 +6,11 @@ import '../../../cart_screen/presentation/views/cart_screen.dart';
 import '../../../category_screen/presentation/views/categories_screen.dart';
 import '../../../home_screen/presentation/views/home_screen.dart';
 import '../../../wishlist_screen/presentation/views/wishlist_screen.dart';
-import '../../controller/main_bottom_nav_bar_controller.dart';
+import '../controller/main_bottom_nav_bar_controller.dart';
 
 
-class MainBottomNavBarScreen extends StatefulWidget {
-  const MainBottomNavBarScreen({super.key});
-
-  @override
-  State<MainBottomNavBarScreen> createState() => _MainBottomNavBarScreenState();
-}
-
-class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
+class MainBottomNavBarScreen extends StatelessWidget {
+  MainBottomNavBarScreen({super.key});
 
   final List<Widget> _screens = [
     HomeScreen(),
@@ -43,14 +37,14 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
                   BoxShadow(
                     color: AppColor.lightGreyColor,
                     blurRadius: 1,
-                    spreadRadius: 1.5,
+                    spreadRadius: 2,
                   ),
                 ],
               ),
               child: NavigationBarTheme(
                 data: NavigationBarThemeData(
                   indicatorColor: Colors.transparent,
-                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  overlayColor: WidgetStateProperty.all(Colors.transparent),
                   labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
                         (Set<WidgetState> states) {
                       if (states.contains(WidgetState.selected)) {

@@ -19,6 +19,7 @@ class AppInputDecoration {
       ),
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.start,
+      prefixIconColor: AppColor.secondaryColor,
     );
   }
 

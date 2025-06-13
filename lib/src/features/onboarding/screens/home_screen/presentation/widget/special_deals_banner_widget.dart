@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../../../../core/app/app_spacing.dart';
 import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/images.dart';
-import '../../controller/home_nav_controller.dart';
+import '../controller/home_nav_controller.dart';
 
 class SpecialDealsBannerWidget extends StatelessWidget {
   const SpecialDealsBannerWidget({super.key});

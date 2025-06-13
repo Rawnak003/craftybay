@@ -5,14 +5,14 @@ class InputValidators {
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
     );
     if (regEx.hasMatch(email) == false) {
-      return 'Please enter valid email';
+      return 'Please enter valid Email';
     }
     return null;
   }
 
   static String? passwordValidator(String? value) {
     if ((value?.isEmpty ?? true) || (value!.length < 6)) {
-      return 'Please enter password with at least 6 letters';
+      return 'Please enter Password with at least 6 letters';
     }
     return null;
   }
@@ -28,7 +28,7 @@ class InputValidators {
     String phone = value?.trim() ?? '';
     RegExp regExp = RegExp(r'^(?:\+8801|01)[3-9]\d{8}$');
     if (regExp.hasMatch(phone) == false) {
-      return 'Please enter valid phone number';
+      return 'Please enter valid Phone Number';
     }
     return null;
   }

@@ -5,8 +5,8 @@ import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/category_item_widget.dart';
 import '../../../../common_widget/product_item_card_widget.dart';
-import '../../../parent_screen/controller/main_bottom_nav_bar_controller.dart';
-import '../../controller/home_nav_controller.dart';
+import '../../../parent_screen/presentation/controller/main_bottom_nav_bar_controller.dart';
+import '../controller/home_nav_controller.dart';
 import '../widget/custom_home_app_bar.dart';
 import '../widget/home_carousel_slider_widget.dart';
 import '../widget/search_bar_widget.dart';
@@ -19,11 +19,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MainBottomNavController mainBottomNavController = Get.find<MainBottomNavController>();
-  HomeNavController homeNavController = Get.find<HomeNavController>();
+  final MainBottomNavController mainBottomNavController = Get.find<MainBottomNavController>();
+  final HomeNavController homeNavController = Get.find<HomeNavController>();
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: CustomHomeAppBar(),
       body: SingleChildScrollView(

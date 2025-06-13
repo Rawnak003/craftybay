@@ -4,23 +4,19 @@ import 'package:get/get.dart';
 import '../../../../../../core/app/app_spacing.dart';
 import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/strings.dart';
-import '../../../../../../core/routes/app_route_names.dart';
 import '../../../../common_widget/custom_action_button.dart';
 import '../../../../common_widget/custom_bottom_button.dart';
 import '../../../../common_widget/item_counter_widget.dart';
+import '../controller/product_screen_controller.dart';
 import '../widgets/color_picker_widget.dart';
 import '../widgets/product_preview_widget.dart';
 import '../widgets/size_picker_widget.dart';
 
-class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key});
+class ProductScreen extends StatelessWidget {
+  ProductScreen({super.key});
 
-  @override
-  State<ProductScreen> createState() => _ProductScreenState();
-}
-
-class _ProductScreenState extends State<ProductScreen> {
   final ValueNotifier<int> _currentSlider = ValueNotifier(0);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,7 +55,7 @@ class _ProductScreenState extends State<ProductScreen> {
               button: SizedBox(
                 width: AppSpacing.screenWidth(context) * 0.3,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {}, //TODO: Add functionality to move to cart
                   child: Text(AppStrings.addToCart),
                 ),
               ),
@@ -98,7 +94,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     Spacer(),
                     TextButton(
                       onPressed: () {
-                        Get.toNamed(AppRoutesName.reviews);
+                        Get.find<ProductScreenController>().gotoReview();
                       },
                       child: Text(
                         AppStrings.reviews, style: Theme.of(context,).textTheme.titleMedium?.copyWith(fontSize: 18, color: AppColor.themeColor,),

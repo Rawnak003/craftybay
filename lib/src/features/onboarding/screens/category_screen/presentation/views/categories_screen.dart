@@ -6,16 +6,11 @@ import '../../../../../../core/app/app_spacing.dart';
 import '../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/category_item_widget.dart';
 import '../../../../common_widget/custom_app_bar.dart';
-import '../../../parent_screen/controller/main_bottom_nav_bar_controller.dart';
+import '../../../parent_screen/presentation/controller/main_bottom_nav_bar_controller.dart';
 
-class CategoriesScreen extends StatefulWidget {
+class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
 
-  @override
-  State<CategoriesScreen> createState() => _CategoriesScreenState();
-}
-
-class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
