@@ -15,15 +15,15 @@ class ReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(
-          title: AppStrings.reviews,
-          onTap: () {
-            Get.back();
-          },
-        ),
-        body: Column(
+    return Scaffold(
+      appBar: CustomAppBar(
+        title: AppStrings.reviews,
+        onTap: () {
+          Get.back();
+        },
+      ),
+      body: SafeArea(
+        child: Column(
           children: [
             Expanded(
               child: ListView.builder(
@@ -56,8 +56,8 @@ class ReviewScreen extends StatelessWidget {
               ),
             ),
           ],
-        )
-      ),
+        ),
+      )
     );
   }
 }

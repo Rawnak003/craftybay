@@ -34,10 +34,10 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(title: AppStrings.createReview, onTap: (){Get.back();}),
-        body: Padding(
+    return Scaffold(
+      appBar: CustomAppBar(title: AppStrings.createReview, onTap: (){Get.back();}),
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.all(AppSpacing.pagePadding),
           child: SingleChildScrollView(
             child: Form(

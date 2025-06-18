@@ -13,7 +13,7 @@ class ProductItemCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(AppRoutesName.product);
+        Get.toNamed(AppRoutesName.productDetails, arguments: '1234');
       },
       child: SizedBox(
         height: AppSpacing.screenHeight(context) * 0.18,

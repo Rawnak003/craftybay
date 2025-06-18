@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../../../core/app/app_spacing.dart';
-import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/strings.dart';
-import '../../../../common_widget/custom_action_button.dart';
 import '../../../../common_widget/custom_bottom_button.dart';
-import '../../../../common_widget/item_counter_widget.dart';
-import '../controller/product_screen_controller.dart';
 import '../widgets/color_picker_widget.dart';
+import '../widgets/custom_header_widget.dart';
 import '../widgets/product_preview_widget.dart';
 import '../widgets/size_picker_widget.dart';
 
-class ProductScreen extends StatelessWidget {
-  ProductScreen({super.key});
+class ProductDetailsScreen extends StatelessWidget {
+  ProductDetailsScreen({super.key, required this.productId});
+
+  final String productId;
 
   final ValueNotifier<int> _currentSlider = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
           children: [
             ProductPreviewWidget(currentSlider: _currentSlider),
             Expanded(
@@ -31,7 +29,7 @@ class ProductScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildHeadingRow(context),
+                      CustomHeaderWidget(),
                       SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
                       Text(AppStrings.color, style: Theme.of(context,).textTheme.titleLarge?.copyWith(fontSize: 20, fontWeight: FontWeight.w500)),
                       SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
@@ -63,53 +61,6 @@ class ProductScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildHeadingRow(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-          child: SizedBox(
-            width: AppSpacing.screenWidth(context) * 0.6,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Nike Air Max 270',
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: Theme.of(context,).textTheme.titleLarge,
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.star, color: AppColor.yellowColor, size: 20),
-                    SizedBox(width: AppSpacing.screenWidth(context) * 0.005),
-                    Text(
-                      '4.5', style: Theme.of(context,).textTheme.titleMedium?.copyWith(fontSize: 18),
-                    ),
-                    Spacer(),
-                    TextButton(
-                      onPressed: () {
-                        Get.find<ProductScreenController>().gotoReview();
-                      },
-                      child: Text(
-                        AppStrings.reviews, style: Theme.of(context,).textTheme.titleMedium?.copyWith(fontSize: 18, color: AppColor.themeColor,),
-                      ),
-                    ),
-                    Spacer(),
-                    CustomActionButton(iconData: Icons.favorite_border),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        ItemCounterWidget(),
-      ],
     );
   }
 }

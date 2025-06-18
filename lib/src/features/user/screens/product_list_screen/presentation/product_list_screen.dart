@@ -16,12 +16,12 @@ class ProductListScreen extends StatefulWidget {
 class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(title: widget.categoryTitle, onTap: () {
-          Get.back();
-        },),
-        body: Padding(
+    return Scaffold(
+      appBar: CustomAppBar(title: widget.categoryTitle, onTap: () {
+        Get.back();
+      },),
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding),
           child: GridView.builder(
             itemCount: 30,
