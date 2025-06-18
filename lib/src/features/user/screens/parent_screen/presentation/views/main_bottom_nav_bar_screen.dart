@@ -24,9 +24,7 @@ class MainBottomNavBarScreen extends StatelessWidget {
     return GetBuilder<MainBottomNavController>(
       builder: (navController) {
         return Scaffold(
-          body: SafeArea(
-            child: _screens[navController.selectedIndex],
-          ),
+          body: _screens[navController.selectedIndex],
           bottomNavigationBar: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(

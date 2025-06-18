@@ -4,6 +4,7 @@ import '../../features/authentication/screens/sign_in_screen/presentation/contro
 import '../../features/authentication/screens/sign_in_screen/presentation/controllers/sign_in_controller.dart';
 import '../../features/authentication/screens/sign_up_screen/presentation/controllers/sign_up_controller.dart';
 import '../../features/splash/presentation/controller/splash_controller.dart';
+import '../../features/user/controller/item_counter_controller.dart';
 import '../../features/user/screens/home_screen/presentation/controller/home_nav_controller.dart';
 import '../../features/user/screens/parent_screen/presentation/controller/main_bottom_nav_bar_controller.dart';
 import '../../features/user/screens/product_details_screen/presentation/controller/product_screen_controller.dart';
@@ -23,6 +24,12 @@ class ControllerBinder extends Bindings {
     Get.put(SizePickerController());
     Get.put(ProductScreenController());
     Get.put(ReviewScreenController());
-
+    for (int i = 0; i < 10; i++) {
+      Get.lazyPut<ItemCounterController>(
+            () => ItemCounterController(initialValue: 1),
+        tag: 'cart_item_$i',
+        fenix: true,
+      );
+    }
   }
 }

@@ -7,8 +7,10 @@ import '../../../../common_widget/item_counter_widget.dart';
 
 class CustomCartProductWidget extends StatelessWidget {
   const CustomCartProductWidget({
-    super.key,
+    super.key, required this.id,
   });
+
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +60,12 @@ class CustomCartProductWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('\$200', style: Theme.of(context,).textTheme.titleMedium?.copyWith(fontSize: 20, color: AppColor.themeColor,),),
-                      ItemCounterWidget(),
+                      ItemCounterWidget(
+                        id: id,
+                        onChanged: (value) {
+                          print("Qty changed for $id → $value");
+                        },
+                      ),
                     ],
                   )
                 ],

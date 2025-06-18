@@ -33,7 +33,7 @@ class CartScreen extends StatelessWidget {
                 child: ListView.separated(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return CustomCartProductWidget();
+                    return CustomCartProductWidget(id: 'cart_item_$index');
                   },
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(height: 4);

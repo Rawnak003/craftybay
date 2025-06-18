@@ -8,4 +8,6 @@ class SizePickerController extends GetxController {
   void selectSize(int index) {
     selectedIndex.value = index;
   }
+
+  String get selectedColor => sizeOptions[selectedIndex.value];
 }

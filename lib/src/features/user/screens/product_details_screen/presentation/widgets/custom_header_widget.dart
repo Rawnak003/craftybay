@@ -9,12 +9,16 @@ import '../../../../common_widget/custom_action_button.dart';
 import '../../../../common_widget/item_counter_widget.dart';
 import '../controller/product_screen_controller.dart';
 
-class CustomHeaderWidget extends StatelessWidget {
+class CustomHeaderWidget extends StatefulWidget {
   const CustomHeaderWidget({
     super.key,
   });
 
+  @override
+  State<CustomHeaderWidget> createState() => _CustomHeaderWidgetState();
+}
 
+class _CustomHeaderWidgetState extends State<CustomHeaderWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -58,7 +62,10 @@ class CustomHeaderWidget extends StatelessWidget {
             ),
           ),
         ),
-        ItemCounterWidget(),
+        ItemCounterWidget(
+          id: 'product_1', // make this dynamic per item (like 'product_${index}')
+          onChanged: (int value) {},
+        ),
       ],
     );
   }
