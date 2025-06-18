@@ -6,4 +6,7 @@ class ProductScreenController extends GetxController {
   void gotoReview() {
     Get.toNamed(AppRoutesName.reviews);
   }
+  void gotoParentScreen() {
+    Get.toNamed(AppRoutesName.parent);
+  }
 }

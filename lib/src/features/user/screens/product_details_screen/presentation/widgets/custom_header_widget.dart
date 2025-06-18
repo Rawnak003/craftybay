@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,20 +6,19 @@ import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/strings.dart';
 import '../../../../common_widget/custom_action_button.dart';
 import '../../../../common_widget/item_counter_widget.dart';
+import '../../../../controller/item_counter_controller.dart';
 import '../controller/product_screen_controller.dart';
 
-class CustomHeaderWidget extends StatefulWidget {
-  const CustomHeaderWidget({
-    super.key,
-  });
+class CustomHeaderWidget extends StatelessWidget {
+  const CustomHeaderWidget({super.key, required this.id});
+  final String id;
 
-  @override
-  State<CustomHeaderWidget> createState() => _CustomHeaderWidgetState();
-}
-
-class _CustomHeaderWidgetState extends State<CustomHeaderWidget> {
   @override
   Widget build(BuildContext context) {
+    if (!Get.isRegistered<ItemCounterController>(tag: id)) {
+      Get.put(ItemCounterController(initialValue: 1), tag: id);
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -43,7 +41,8 @@ class _CustomHeaderWidgetState extends State<CustomHeaderWidget> {
                     Icon(Icons.star, color: AppColor.yellowColor, size: 20),
                     SizedBox(width: AppSpacing.screenWidth(context) * 0.005),
                     Text(
-                      '4.5', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 18),
+                      '4.5',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 18),
                     ),
                     Spacer(),
                     TextButton(
@@ -51,7 +50,11 @@ class _CustomHeaderWidgetState extends State<CustomHeaderWidget> {
                         Get.find<ProductScreenController>().gotoReview();
                       },
                       child: Text(
-                        AppStrings.reviews, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 18, color: AppColor.themeColor,),
+                        AppStrings.reviews,
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontSize: 18,
+                          color: AppColor.themeColor,
+                        ),
                       ),
                     ),
                     Spacer(),
@@ -63,7 +66,7 @@ class _CustomHeaderWidgetState extends State<CustomHeaderWidget> {
           ),
         ),
         ItemCounterWidget(
-          id: 'product_1', // make this dynamic per item (like 'product_${index}')
+          id: id,
           onChanged: (int value) {},
         ),
       ],

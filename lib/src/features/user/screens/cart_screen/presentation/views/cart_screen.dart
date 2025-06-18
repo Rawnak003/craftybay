@@ -29,7 +29,9 @@ class CartScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding,),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.pagePadding,
+                ),
                 child: ListView.separated(
                   itemCount: 10,
                   itemBuilder: (context, index) {
@@ -41,18 +43,22 @@ class CartScreen extends StatelessWidget {
                 ),
               ),
             ),
-            CustomBottomButton(
-              title: 'Total Price',
-              subtext: '\$ 10000',
-              button: SizedBox(
-                width: AppSpacing.screenWidth(context) * 0.3,
-                child: ElevatedButton(
-                  onPressed: () {}, //TODO: Add functionality to checkout
-                  child: Text(AppStrings.checkout),
-                ),
-              ),
-            ),
+            _buildPriceAndCheckOutSection(context),
           ],
+        ),
+      ),
+    );
+  }
+
+  CustomBottomButton _buildPriceAndCheckOutSection(BuildContext context) {
+    return CustomBottomButton(
+      title: 'Total Price',
+      subtext: '\$ 10000',
+      button: SizedBox(
+        width: AppSpacing.screenWidth(context) * 0.3,
+        child: ElevatedButton(
+          onPressed: () {}, //TODO: Add functionality to checkout
+          child: Text(AppStrings.checkout),
         ),
       ),
     );
