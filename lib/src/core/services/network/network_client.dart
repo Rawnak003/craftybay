@@ -16,13 +16,13 @@ class NetworkClient {
   dynamic _handleResponse(Response response) {
     if (response.statusCode == 200 || response.statusCode == 201) {
       final responseBody = jsonDecode(response.body);
-      return NetworkResponse(responseData: responseBody, statusCode: response.statusCode);
+      return NetworkResponse(responseData: responseBody, statusCode: response.statusCode, isSuccessful: true);
     } else if (response.statusCode == 401) {
       onUnauthorized();
-      return NetworkResponse(statusCode: response.statusCode, errorMessage: 'Unauthorized');
+      return NetworkResponse(statusCode: response.statusCode, errorMessage: 'Unauthorized',isSuccessful: false);
     } else {
       final responseBody = jsonDecode(response.body);
-      return NetworkResponse(statusCode: response.statusCode, responseData: responseBody['message'] ?? _defaultErrorMessage);
+      return NetworkResponse(isSuccessful: false,statusCode: response.statusCode, errorMessage: responseBody['msg'] ?? _defaultErrorMessage);
     }
   }
 
@@ -34,7 +34,7 @@ class NetworkClient {
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
-      return NetworkResponse(statusCode: -1, errorMessage: e.toString());
+      return NetworkResponse(isSuccessful: false,statusCode: -1, errorMessage: e.toString());
     }
   }
 
@@ -46,7 +46,7 @@ class NetworkClient {
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
-      return NetworkResponse(statusCode: -1, errorMessage: e.toString());
+      return NetworkResponse(isSuccessful: false,statusCode: -1, errorMessage: e.toString());
     }
   }
 
@@ -58,7 +58,7 @@ class NetworkClient {
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
-      return NetworkResponse(statusCode: -1, errorMessage: e.toString());
+      return NetworkResponse(isSuccessful: false,statusCode: -1, errorMessage: e.toString());
     }
   }
 
@@ -70,7 +70,7 @@ class NetworkClient {
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
-      return NetworkResponse(statusCode: -1, errorMessage: e.toString());
+      return NetworkResponse(isSuccessful: false,statusCode: -1, errorMessage: e.toString());
     }
   }
 
@@ -82,7 +82,7 @@ class NetworkClient {
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
-      return NetworkResponse(statusCode: -1, errorMessage: e.toString());
+      return NetworkResponse(isSuccessful: false,statusCode: -1, errorMessage: e.toString());
     }
   }
 
