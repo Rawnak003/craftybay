@@ -50,6 +50,8 @@ class AppStrings {
   static const String createReview = 'Create Review';
   static const String yourReview = 'Your Review';
   static const String submit = 'Submit';
+  static const String verifyOtp = 'Verify OTP';
+  static const String verifyOtpMessage = 'Please enter your 4 digit OTP sent to ';
 
 
 

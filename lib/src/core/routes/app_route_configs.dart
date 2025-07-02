@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../features/presentation/views/authentication/screens/otp_verify_screen.dart';
 import '../../features/presentation/views/authentication/screens/sign_in_screen.dart';
 import '../../features/presentation/views/authentication/screens/sign_up_screen.dart';
 import '../../features/presentation/views/splash/splash_screen.dart';
@@ -23,6 +24,11 @@ class AppRouteConfigs {
       case AppRoutesName.signUp:
         return MaterialPageRoute(
           builder: (context) => const SignUpScreen(),
+        );
+      case AppRoutesName.verifyOtp:
+        final String email = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => OtpVerificationScreen(email: email,),
         );
       case AppRoutesName.parent:
         return MaterialPageRoute(

@@ -1,6 +1,9 @@
+import 'package:craftybay/src/core/routes/app_route_names.dart';
 import 'package:craftybay/src/core/services/network/network_client.dart';
+import 'package:craftybay/src/features/presentation/controller/authentication_controllers/auth_controller.dart';
 import 'package:get/get.dart';
 
+import '../features/presentation/controller/authentication_controllers/otp_verification_controller.dart';
 import '../features/presentation/controller/authentication_controllers/show_password_controller.dart';
 import '../features/presentation/controller/authentication_controllers/sign_in_controller.dart';
 import '../features/presentation/controller/authentication_controllers/sign_up_controller.dart';
@@ -13,7 +16,6 @@ import '../features/presentation/controller/user_controllers/product_screen_cont
 import '../features/presentation/controller/user_controllers/review_screen_controller.dart';
 import '../features/presentation/controller/user_controllers/size_picker_controller.dart';
 
-
 class ControllerBinder extends Bindings {
   @override
   void dependencies() {
@@ -21,6 +23,8 @@ class ControllerBinder extends Bindings {
     Get.put(SignInController());
     Get.put(ShowPasswordController());
     Get.put(SignUpController());
+    Get.put(OtpVerificationController());
+    Get.put(AuthController());
     Get.put(MainBottomNavController());
     Get.put(HomeNavController());
     Get.put(ColorPickerController());
@@ -29,20 +33,23 @@ class ControllerBinder extends Bindings {
     Get.put(ReviewScreenController());
     for (int i = 0; i < 10; i++) {
       Get.lazyPut<ItemCounterController>(
-            () => ItemCounterController(initialValue: 1),
+        () => ItemCounterController(initialValue: 1),
         tag: 'cart_item_$i',
         fenix: true,
       );
     }
-    Get.put(NetworkClient(onUnauthorized: _onUnauthorized, headers: _headers));
+    Get.put(NetworkClient(onUnauthorized: _onUnauthorized, headers: _headers()));
   }
 
   void _onUnauthorized() {
-    // TODO: implement onUnauthorized and re-login
+    Get.find<AuthController>().clearUserData();
+    Get.toNamed(AppRoutesName.signIn);
   }
 
-  final Map<String, String> _headers = {
-    'content-Type': 'application/json',
-    'access-token': '',
-  };
+  Map<String, String> _headers() {
+    return {
+      'content-Type': 'application/json',
+      'access-token': Get.find<AuthController>().accessToken ?? '',
+    };
+  }
 }

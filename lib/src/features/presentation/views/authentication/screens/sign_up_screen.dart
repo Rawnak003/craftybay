@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../../../../app/app_spacing.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/constants/strings.dart';
+import '../../../../../core/routes/app_route_names.dart';
 import '../../../../../core/utils/input_validators.dart';
 import '../common_widgets/app_logo_widget.dart';
 import '../../../controller/authentication_controllers/sign_up_controller.dart';
@@ -42,6 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       final bool isSuccess = await _signUpController.onSignUp(model);
       if (isSuccess) {
         showSnackBarMessage(context, _signUpController.message);
+        Navigator.pushNamed(context, AppRoutesName.verifyOtp, arguments: _emailTEController.text.trim());
       } else {
         showSnackBarMessage(context, _signUpController.errorMessage!, true);
       }
