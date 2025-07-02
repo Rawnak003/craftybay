@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../app/app_spacing.dart';
@@ -11,6 +10,7 @@ import '../../../../controller/user_controllers/main_bottom_nav_bar_controller.d
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
 
+
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
 }
@@ -18,19 +18,19 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
 
   final ScrollController _scrollController = ScrollController();
-  final CategoryListController _categoryListController = Get.find<CategoryListController>();
+  final CategoryListController _categoryListController =
+  Get.find<CategoryListController>();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_loadMoreData);
+  }
 
   void _loadMoreData() {
     if (_scrollController.position.extentAfter < 300) {
       _categoryListController.getCategories();
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    Get.find<CategoryListController>().getCategories();
-    _scrollController.addListener(_loadMoreData);
   }
 
   @override
@@ -66,8 +66,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       itemBuilder: (context, index) {
                         return FittedBox(
                           child: CategoryItemWidget(
-                            iconData: Icons.desktop_mac_sharp,
-                            title: AppStrings.electronics,
+                            categoryModel: controller.categoryList[index],
                           ),
                         );
                       },

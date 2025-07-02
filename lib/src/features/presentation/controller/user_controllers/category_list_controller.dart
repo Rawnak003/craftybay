@@ -22,14 +22,18 @@ class CategoryListController extends GetxController{
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
 
+  int get homeCategoryItemLength => _categoryList.length > 10 ? 10 : _categoryList.length;
+
   final List<CategoryModel> _categoryList = [];
   List<CategoryModel> get categoryList => _categoryList;
 
   Future<void> getCategories() async {
     _currentPage++;
-    if (_lastPage != null || _lastPage! < _currentPage) {
+
+    if (_lastPage != null && _lastPage! < _currentPage) {
       return;
     }
+
     if (_currentPage == 1) {
       _categoryList.clear();
       _initialLoadingInProgress = true;
@@ -37,17 +41,16 @@ class CategoryListController extends GetxController{
       _inProgress = true;
     }
     update();
+    update();
     try {
-      NetworkResponse response = await Get.find<NetworkClient>().getRequest(
-        url: AppUrls.getCategoriesUrl(
-          _count,
-          _currentPage,
-        ),
+      final NetworkResponse response = await Get.find<NetworkClient>().getRequest(
+        url: AppUrls.getCategoriesUrl(_count, _currentPage),
       );
       if (response.isSuccessful) {
         _lastPage = response.responseData!['data']['last_page'] ?? 0;
         List<CategoryModel> list = [];
-        for (Map<String, dynamic> map in response.responseData!['data']['results']) {
+        for (Map<String, dynamic> map
+        in response.responseData!['data']['results']) {
           list.add(CategoryModel.fromJson(map));
         }
         _categoryList.addAll(list);

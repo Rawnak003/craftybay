@@ -1,3 +1,4 @@
+import 'package:craftybay/src/features/presentation/controller/user_controllers/category_list_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../app/app_spacing.dart';
@@ -80,16 +81,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildCategoryDisplay() {
     return SizedBox(
       height: AppSpacing.screenHeight(context) * 0.15,
-      child: ListView.separated(
-        itemCount: 10,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return CategoryItemWidget(
-            title: AppStrings.electronics,
-            iconData: Icons.desktop_mac_sharp,
+      child: GetBuilder<CategoryListController>(
+        builder: (controller) {
+          if (controller.initialLoadingInProgress){
+            return const Center(child: CircularProgressIndicator());
+          }
+          return ListView.separated(
+            itemCount: controller.homeCategoryItemLength,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return CategoryItemWidget(
+                categoryModel: controller.categoryList[index],
+              );
+            },
+            separatorBuilder: (context, index) => SizedBox(width: AppSpacing.screenWidth(context) * 0.04),
           );
-        },
-        separatorBuilder: (context, index) => SizedBox(width: AppSpacing.screenWidth(context) * 0.04),
+        }
       ),
     );
   }
