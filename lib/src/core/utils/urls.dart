@@ -6,4 +6,5 @@ class AppUrls {
   static const String signInUrl = '$_baseUrl/auth/login';
 
   static const String getSliderUrl = '$_baseUrl/slides';
+  static String getCategoriesUrl(int count, int currentPage) => '$_baseUrl/categories?count=$count&page=$currentPage';
 }

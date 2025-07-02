@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/strings.dart';
+import '../../../../controller/user_controllers/category_list_controller.dart';
 import '../../../../controller/user_controllers/home_slider_controller.dart';
 import '../cart_screen/cart_screen.dart';
 import '../category_screen/categories_screen.dart';
@@ -30,6 +31,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   void initState() {
     super.initState();
     Get.find<HomeSliderController>().getHomeSliders();
+    Get.find<CategoryListController>().getCategories();
   }
 
   @override

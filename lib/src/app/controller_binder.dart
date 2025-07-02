@@ -9,6 +9,7 @@ import '../features/presentation/controller/authentication_controllers/show_pass
 import '../features/presentation/controller/authentication_controllers/sign_in_controller.dart';
 import '../features/presentation/controller/authentication_controllers/sign_up_controller.dart';
 import '../features/presentation/controller/splash_controller/splash_controller.dart';
+import '../features/presentation/controller/user_controllers/category_list_controller.dart';
 import '../features/presentation/controller/user_controllers/color_picker_controller.dart';
 import '../features/presentation/controller/user_controllers/home_nav_controller.dart';
 import '../features/presentation/controller/user_controllers/item_counter_controller.dart';
@@ -29,6 +30,7 @@ class ControllerBinder extends Bindings {
     Get.put(MainBottomNavController());
     Get.put(HomeNavController());
     Get.put(HomeSliderController());
+    Get.put(CategoryListController());
     Get.put(ColorPickerController());
     Get.put(SizePickerController());
     Get.put(ProductScreenController());

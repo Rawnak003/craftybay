@@ -3,12 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../app/app_spacing.dart';
 import '../../../../../../core/constants/strings.dart';
+import '../../../../controller/user_controllers/category_list_controller.dart';
 import '../../common_widget/category_item_widget.dart';
 import '../../common_widget/custom_app_bar.dart';
 import '../../../../controller/user_controllers/main_bottom_nav_bar_controller.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
+
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
+
+  final ScrollController _scrollController = ScrollController();
+  final CategoryListController _categoryListController = Get.find<CategoryListController>();
+
+  void _loadMoreData() {
+    if (_scrollController.position.extentAfter < 300) {
+      _categoryListController.getCategories();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Get.find<CategoryListController>().getCategories();
+    _scrollController.addListener(_loadMoreData);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,24 +45,42 @@ class CategoriesScreen extends StatelessWidget {
           title: AppStrings.categories,
           onTap: () => Get.find<MainBottomNavController>().backToHome(),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(AppSpacing.pagePadding),
-          child: GridView.builder(
-            itemCount: 50,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              mainAxisSpacing: 28,
-              crossAxisSpacing: 2,
-            ),
-            itemBuilder: (context, index) {
-              return FittedBox(
-                child: CategoryItemWidget(
-                  iconData: Icons.desktop_mac_sharp,
-                  title: AppStrings.electronics,
+        body: GetBuilder<CategoryListController>(
+          builder: (controller) {
+            if (controller.initialLoadingInProgress){
+              return const Center(child: CircularProgressIndicator());
+            }
+            return Column(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(AppSpacing.pagePadding),
+                    child: GridView.builder(
+                      controller: _scrollController,
+                      itemCount: controller.categoryList.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        mainAxisSpacing: 28,
+                        crossAxisSpacing: 2,
+                      ),
+                      itemBuilder: (context, index) {
+                        return FittedBox(
+                          child: CategoryItemWidget(
+                            iconData: Icons.desktop_mac_sharp,
+                            title: AppStrings.electronics,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ),
-              );
-            },
-          ),
+                Visibility(
+                  visible: controller.inProgress,
+                  child: LinearProgressIndicator(),
+                )
+              ],
+            );
+          }
         ),
       ),
     );
