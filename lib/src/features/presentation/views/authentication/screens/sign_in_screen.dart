@@ -4,7 +4,10 @@ import 'package:get/get.dart';
 import '../../../../../app/app_spacing.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/constants/strings.dart';
+import '../../../../../core/routes/app_route_names.dart';
 import '../../../../../core/utils/input_validators.dart';
+import '../../../../../core/utils/snack_bar_message.dart';
+import '../../../../data/models/sign_in_request_model.dart';
 import '../common_widgets/app_logo_widget.dart';
 import '../../../controller/authentication_controllers/show_password_controller.dart';
 import '../../../controller/authentication_controllers/sign_in_controller.dart';
@@ -20,11 +23,21 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final SignInController _signInController = Get.find<SignInController>();
   bool obscurePassword = true;
 
-  void _onTapSignIn() {
+  Future<void> _onTapSignIn() async {
     if (_formKey.currentState!.validate()) {
-      // TODO: implement sign in
+      SignInRequestModel model = SignInRequestModel(
+        email: _emailTEController.text.trim(),
+        password: _passwordTEController.text,
+      );
+      final bool isSuccess = await _signInController.onSignIn(model);
+      if (isSuccess) {
+        Navigator.pushNamedAndRemoveUntil(context, AppRoutesName.parent, (predicate) => false);
+      } else {
+        showSnackBarMessage(context, _signInController.errorMessage!, true);
+      }
     }
   }
 
@@ -112,9 +125,17 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
-                    ElevatedButton(
-                      onPressed: _onTapSignIn,
-                      child: Text(AppStrings.signIn),
+                    GetBuilder<SignInController>(
+                      builder: (controller) {
+                        return Visibility(
+                          visible: controller.signInInProgress == false,
+                          replacement: Center(child: const CircularProgressIndicator()),
+                          child: ElevatedButton(
+                            onPressed: _onTapSignIn,
+                            child: Text(AppStrings.signIn),
+                          ),
+                        );
+                      }
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.05),
                     RichText(
@@ -132,7 +153,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             recognizer:
                                 TapGestureRecognizer()
-                                  ..onTap = () => Get.find<SignInController>().onTapSignUp(),
+                                  ..onTap = () => _signInController.onTapSignUp(),
                           ),
                         ],
                       ),
