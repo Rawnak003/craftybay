@@ -2,10 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../../app/app_spacing.dart';
 import '../../../../../../../core/constants/colors.dart';
-import 'special_deals_banner_widget.dart';
+import '../../../../../../data/models/slider_model.dart';
 
 class HomeCarouselSliderWidget extends StatefulWidget {
-  const HomeCarouselSliderWidget({super.key});
+  const HomeCarouselSliderWidget({super.key, required this.sliders});
+
+  final List<SliderModel> sliders;
 
   @override
   State<HomeCarouselSliderWidget> createState() =>
@@ -30,7 +32,7 @@ class _HomeCarouselSliderWidgetState extends State<HomeCarouselSliderWidget> {
             autoPlayInterval: Duration(seconds: 5),
           ),
           items:
-              [1, 2, 3, 4, 5].map((i) {
+              widget.sliders.map((slider) {
                 return Builder(
                   builder: (context) {
                     return Container(
@@ -39,9 +41,9 @@ class _HomeCarouselSliderWidgetState extends State<HomeCarouselSliderWidget> {
                       decoration: BoxDecoration(
                         color: AppColor.themeColor,
                         borderRadius: BorderRadius.circular(8),
+                        image: DecorationImage(image: NetworkImage(slider.photoUrl), fit: BoxFit.cover),
                       ),
                       alignment: Alignment.center,
-                      child: SpecialDealsBannerWidget(),
                     );
                   },
                 );
@@ -54,7 +56,7 @@ class _HomeCarouselSliderWidgetState extends State<HomeCarouselSliderWidget> {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < widget.sliders.length; i++)
                   Container(
                     width: AppSpacing.screenWidth(context) * 0.03,
                     height: AppSpacing.screenWidth(context) * 0.03,

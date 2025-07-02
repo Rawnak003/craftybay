@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../../../../app/app_spacing.dart';
 import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/strings.dart';
+import '../../../../controller/user_controllers/home_slider_controller.dart';
 import '../../common_widget/category_item_widget.dart';
 import '../../common_widget/product_item_card_widget.dart';
 import '../../../../controller/user_controllers/main_bottom_nav_bar_controller.dart';
@@ -21,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final MainBottomNavController mainBottomNavController = Get.find<MainBottomNavController>();
   final HomeNavController homeNavController = Get.find<HomeNavController>();
+  final HomeSliderController sliderController = Get.find<HomeSliderController>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,14 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               SearchBarWidget(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.015),
-              HomeCarouselSliderWidget(),
+              GetBuilder<HomeSliderController>(
+                builder: (controller) {
+                  if (controller.inProgress){
+                    return SizedBox(height: AppSpacing.screenHeight(context) * 0.2,child: const Center(child: CircularProgressIndicator()));
+                  }
+                  return HomeCarouselSliderWidget(sliders: sliderController.sliderList);
+                }
+              ),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.015),
               _buildSectionHeader(title: AppStrings.categories, onTap: () {mainBottomNavController.moveToCategory();}),
               _buildCategoryDisplay(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../core/constants/colors.dart';
 import '../../../../../../core/constants/strings.dart';
+import '../../../../controller/user_controllers/home_slider_controller.dart';
 import '../cart_screen/cart_screen.dart';
 import '../category_screen/categories_screen.dart';
 import '../home_screen/home_screen.dart';
@@ -9,8 +10,14 @@ import '../wishlist_screen/wishlist_screen.dart';
 import '../../../../controller/user_controllers/main_bottom_nav_bar_controller.dart';
 
 
-class MainBottomNavBarScreen extends StatelessWidget {
-  MainBottomNavBarScreen({super.key});
+class MainBottomNavBarScreen extends StatefulWidget {
+  const MainBottomNavBarScreen({super.key});
+
+  @override
+  State<MainBottomNavBarScreen> createState() => _MainBottomNavBarScreenState();
+}
+
+class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
 
   final List<Widget> _screens = [
     HomeScreen(),
@@ -18,6 +25,12 @@ class MainBottomNavBarScreen extends StatelessWidget {
     CartScreen(),
     WishlistScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    Get.find<HomeSliderController>().getHomeSliders();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -4,4 +4,6 @@ class AppUrls {
   static const String signUpUrl = '$_baseUrl/auth/signup';
   static const String otpVerifyUrl = '$_baseUrl/auth/verify-otp';
   static const String signInUrl = '$_baseUrl/auth/login';
+
+  static const String getSliderUrl = '$_baseUrl/slides';
 }
