@@ -41,7 +41,6 @@ class CategoryListController extends GetxController{
       _inProgress = true;
     }
     update();
-    update();
     try {
       final NetworkResponse response = await Get.find<NetworkClient>().getRequest(
         url: AppUrls.getCategoriesUrl(_count, _currentPage),

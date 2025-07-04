@@ -31,7 +31,7 @@ class WishlistScreen extends StatelessWidget {
               childAspectRatio: 0.7,
             ),
             itemBuilder: (context, index) {
-              return FittedBox(child: ProductItemCardWidget());
+              //return FittedBox(child: ProductItemCardWidget());
             },
           ),
         ),

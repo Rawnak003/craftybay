@@ -1,3 +1,4 @@
+import 'package:craftybay/src/features/data/models/category_model.dart';
 import 'package:flutter/material.dart';
 import '../../features/presentation/views/authentication/screens/otp_verify_screen.dart';
 import '../../features/presentation/views/authentication/screens/sign_in_screen.dart';
@@ -35,9 +36,9 @@ class AppRouteConfigs {
           builder: (context) => MainBottomNavBarScreen(),
         );
       case AppRoutesName.productList:
-        final categoryTitle = settings.arguments as String;
+        final category = settings.arguments as CategoryModel;
         return MaterialPageRoute(
-          builder: (context) => ProductListScreen(categoryTitle: categoryTitle),
+          builder: (context) => ProductListScreen(category: category),
         );
       case AppRoutesName.productDetails:
         final productId = settings.arguments as String;

@@ -9,8 +9,6 @@ import '../../../../controller/user_controllers/main_bottom_nav_bar_controller.d
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
-
-
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
 }

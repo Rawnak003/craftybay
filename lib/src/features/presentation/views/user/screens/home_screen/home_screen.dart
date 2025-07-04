@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: 10,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return ProductItemCardWidget();
+          //return ProductItemCardWidget();
         },
         separatorBuilder: (context, index) => SizedBox(width: AppSpacing.screenWidth(context) * 0.02),
       ),

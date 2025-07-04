@@ -63,7 +63,6 @@ class CustomCartProductWidget extends StatelessWidget {
                       ItemCounterWidget(
                         id: id,
                         onChanged: (value) {
-                          print("Qty changed for $id → $value");
                         },
                       ),
                     ],

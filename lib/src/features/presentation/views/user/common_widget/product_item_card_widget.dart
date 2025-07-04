@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../app/app_spacing.dart';
 import '../../../../../core/constants/colors.dart';
-import '../../../../../core/constants/images.dart';
 import '../../../../../core/routes/app_route_names.dart';
+import '../../../../data/models/product_model.dart';
 import 'custom_action_button.dart';
 
 class ProductItemCardWidget extends StatelessWidget {
-  const ProductItemCardWidget({super.key});
+  const ProductItemCardWidget({super.key, required this.productModel});
+
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(AppRoutesName.productDetails, arguments: '1234');
+        Get.toNamed(AppRoutesName.productDetails, arguments: productModel.id);
       },
       child: SizedBox(
         height: AppSpacing.screenHeight(context) * 0.18,
@@ -32,7 +34,19 @@ class ProductItemCardWidget extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Image.asset(AppImages.shoeLogoPng, fit: BoxFit.contain),
+                  child: Image.network(
+                    productModel.photoUrls.first,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Center(
+                        child: Icon(
+                          Icons.broken_image,
+                          size: 40,
+                          color: Colors.grey,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(
@@ -40,7 +54,7 @@ class ProductItemCardWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Nike Air Max 270',
+                      productModel.title,
                       style: Theme.of(context).textTheme.bodySmall,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -50,7 +64,7 @@ class ProductItemCardWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '\$99.99',
+                          '\$${productModel.currentPrice}',
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: AppColor.themeColor,
                             fontSize: 13,

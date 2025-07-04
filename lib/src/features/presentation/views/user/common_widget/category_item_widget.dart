@@ -17,7 +17,7 @@ class CategoryItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(AppRoutesName.productList, arguments: categoryModel.title),
+      onTap: () => Get.toNamed(AppRoutesName.productList, arguments: categoryModel),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,10 +34,17 @@ class CategoryItemWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: AppSpacing.screenHeight(context) * 0.005),
-          Text(categoryModel.title, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColor.themeColor, fontWeight: FontWeight.w500),
+          Text(getTitle(categoryModel.title), style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColor.themeColor, fontWeight: FontWeight.w500),
           ),
         ],
       ),
     );
+  }
+
+  String getTitle(String title){
+    if(title.length > 10){
+      return '${title.substring(0, 8)}..';
+    }
+    return title;
   }
 }
