@@ -1,4 +1,7 @@
 import 'package:craftybay/src/features/presentation/controller/user_controllers/category_list_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/new_product_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/popular_product_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/special_product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../app/app_spacing.dart';
@@ -49,13 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
               _buildCategoryDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
               _buildSectionHeader(title: AppStrings.popular, onTap: () {homeNavController.gotoPopular();}),
-              _buildProductDisplay(),
+              _buildPopularProductDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
               _buildSectionHeader(title: AppStrings.special, onTap: () {homeNavController.gotoSpecial();}),
-              _buildProductDisplay(),
+              _buildNewProductDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
               _buildSectionHeader(title: AppStrings.newArrivals, onTap: () {homeNavController.gotoNewArrivals();}),
-              _buildProductDisplay(),
+              _buildSpecialProductDisplay(),
               SizedBox(height: AppSpacing.screenHeight(context) * 0.01),
             ],
           ),
@@ -64,20 +67,75 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildProductDisplay() {
+  Widget _buildPopularProductDisplay() {
     return SizedBox(
       height: AppSpacing.screenHeight(context) * 0.18,
-      child: ListView.separated(
-        itemCount: 10,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          //return ProductItemCardWidget();
-        },
-        separatorBuilder: (context, index) => SizedBox(width: AppSpacing.screenWidth(context) * 0.02),
+      child: GetBuilder<PopularProductController>(
+          builder: (controller) {
+            return Visibility(
+              visible: controller.inProgress == false,
+              replacement: Center(child: CircularProgressIndicator(),),
+              child: ListView.separated(
+                itemCount: controller.productList.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return ProductItemCardWidget(
+                    productModel: controller.productList[index],
+                  );
+                },
+                separatorBuilder: (context, index) => SizedBox(width: AppSpacing.screenWidth(context) * 0.02),
+              ),
+            );
+          }
       ),
     );
   }
-
+  Widget _buildSpecialProductDisplay() {
+    return SizedBox(
+      height: AppSpacing.screenHeight(context) * 0.18,
+      child: GetBuilder<SpecialProductController>(
+        builder: (controller) {
+          return Visibility(
+            visible: controller.inProgress == false,
+            replacement: Center(child: CircularProgressIndicator(),),
+            child: ListView.separated(
+              itemCount: controller.productList.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return ProductItemCardWidget(
+                  productModel: controller.productList[index],
+                );
+              },
+              separatorBuilder: (context, index) => SizedBox(width: AppSpacing.screenWidth(context) * 0.02),
+            ),
+          );
+        }
+      ),
+    );
+  }
+  Widget _buildNewProductDisplay() {
+    return SizedBox(
+      height: AppSpacing.screenHeight(context) * 0.18,
+      child: GetBuilder<NewProductController>(
+          builder: (controller) {
+            return Visibility(
+              visible: controller.inProgress == false,
+              replacement: Center(child: CircularProgressIndicator(),),
+              child: ListView.separated(
+                itemCount: controller.productList.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return ProductItemCardWidget(
+                    productModel: controller.productList[index],
+                  );
+                },
+                separatorBuilder: (context, index) => SizedBox(width: AppSpacing.screenWidth(context) * 0.02),
+              ),
+            );
+          }
+      ),
+    );
+  }
   Widget _buildCategoryDisplay() {
     return SizedBox(
       height: AppSpacing.screenHeight(context) * 0.15,

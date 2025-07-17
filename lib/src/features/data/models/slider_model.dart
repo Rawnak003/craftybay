@@ -1,18 +1,18 @@
-class SliderModel {
+class ProductModel {
   final String id;
   final String photoUrl;
   final String description;
   final String brand;
 
-  SliderModel({
+  ProductModel({
     required this.id,
     required this.photoUrl,
     required this.description,
     required this.brand,
   });
 
-  factory SliderModel.fromJson(Map<String, dynamic> json) {
-    return SliderModel(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       id: json['_id'],
       photoUrl: json['photo_url'],
       description: json['description'],

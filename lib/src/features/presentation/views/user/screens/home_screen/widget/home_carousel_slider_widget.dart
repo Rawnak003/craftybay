@@ -7,7 +7,7 @@ import '../../../../../../data/models/slider_model.dart';
 class HomeCarouselSliderWidget extends StatefulWidget {
   const HomeCarouselSliderWidget({super.key, required this.sliders});
 
-  final List<SliderModel> sliders;
+  final List<ProductModel> sliders;
 
   @override
   State<HomeCarouselSliderWidget> createState() =>

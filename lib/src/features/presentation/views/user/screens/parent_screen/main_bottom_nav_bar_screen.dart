@@ -1,3 +1,6 @@
+import 'package:craftybay/src/features/presentation/controller/user_controllers/new_product_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/popular_product_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/special_product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../core/constants/colors.dart';
@@ -32,6 +35,9 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
     super.initState();
     Get.find<HomeSliderController>().getHomeSliders();
     Get.find<CategoryListController>().getCategories();
+    Get.find<PopularProductController>().getPopularProduct();
+    Get.find<NewProductController>().getNewProduct();
+    Get.find<SpecialProductController>().getSpecialProduct();
   }
 
   @override
