@@ -1,3 +1,4 @@
+import 'package:craftybay/src/features/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,13 +11,13 @@ import '../../../common_widget/custom_action_button.dart';
 import '../../../common_widget/item_counter_widget.dart';
 
 class CustomHeaderWidget extends StatelessWidget {
-  const CustomHeaderWidget({super.key, required this.id});
-  final String id;
+  const CustomHeaderWidget({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
-    if (!Get.isRegistered<ItemCounterController>(tag: id)) {
-      Get.put(ItemCounterController(initialValue: 1), tag: id);
+    if (!Get.isRegistered<ItemCounterController>(tag: product.id)) {
+      Get.put(ItemCounterController(initialValue: 1), tag: product.id);
     }
 
     return Row(
@@ -31,7 +32,7 @@ class CustomHeaderWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Nike Air Max 270',
+                  product.title,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: Theme.of(context).textTheme.titleLarge,
@@ -66,7 +67,7 @@ class CustomHeaderWidget extends StatelessWidget {
           ),
         ),
         ItemCounterWidget(
-          id: id,
+          id: product.id,
           onChanged: (int value) {},
         ),
       ],

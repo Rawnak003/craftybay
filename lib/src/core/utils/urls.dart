@@ -9,4 +9,6 @@ class AppUrls {
   static String getCategoriesUrl(int count, int currentPage) => '$_baseUrl/categories?count=$count&page=$currentPage';
   static String getProductsByCategoryUrl(int count, int currentPage, String categoryId) => '$_baseUrl/products?count=$count&page=$currentPage&category=$categoryId';
   static String getProductsByTagUrl(String tag) => '$_baseUrl/products?tag=$tag';
+  static String getProductDetailsByIdUrl(String productId) => '$_baseUrl/products/id/$productId';
+  static const String addToCartUrl = '$_baseUrl/cart';
 }

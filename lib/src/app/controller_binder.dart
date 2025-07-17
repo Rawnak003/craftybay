@@ -1,6 +1,7 @@
 import 'package:craftybay/src/core/routes/app_route_names.dart';
 import 'package:craftybay/src/core/services/network/network_client.dart';
 import 'package:craftybay/src/features/presentation/controller/authentication_controllers/auth_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/add_to_cart_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/home_slider_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/new_product_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/popular_product_controller.dart';
@@ -37,6 +38,7 @@ class ControllerBinder extends Bindings {
     Get.put(NewProductController());
     Get.put(SpecialProductController());
     Get.put(CategoryListController());
+    Get.put(AddToCartController());
     Get.put(ColorPickerController());
     Get.put(SizePickerController());
     Get.put(ProductScreenController());

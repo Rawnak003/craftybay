@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return Visibility(
               visible: controller.inProgress == false,
               replacement: Center(child: CircularProgressIndicator(),),
-              child: ListView.separated(
+              child: controller.productList.isEmpty ? Center(child: Text('No data available'),) : ListView.separated(
                 itemCount: controller.productList.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return Visibility(
             visible: controller.inProgress == false,
             replacement: Center(child: CircularProgressIndicator(),),
-            child: ListView.separated(
+            child: controller.productList.isEmpty ? Center(child: Text('No data available'),) : ListView.separated(
               itemCount: controller.productList.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return Visibility(
               visible: controller.inProgress == false,
               replacement: Center(child: CircularProgressIndicator(),),
-              child: ListView.separated(
+              child: controller.productList.isEmpty ? Center(child: Text('No data available'),) : ListView.separated(
                 itemCount: controller.productList.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {

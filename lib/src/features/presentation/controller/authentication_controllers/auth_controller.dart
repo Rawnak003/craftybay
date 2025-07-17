@@ -22,7 +22,7 @@ class AuthController extends GetxController {
     String? userData = prefs.getString(_userKey);
     String? token = prefs.getString(_tokenKey);
     if (userData != null) {
-      userModel = jsonDecode(userData);
+      userModel = UserModel.fromJson(jsonDecode(userData));
       accessToken = token;
     }
   }

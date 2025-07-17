@@ -34,7 +34,11 @@ class _SignInScreenState extends State<SignInScreen> {
       );
       final bool isSuccess = await _signInController.onSignIn(model);
       if (isSuccess) {
-        Navigator.pushNamedAndRemoveUntil(context, AppRoutesName.parent, (predicate) => false);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          AppRoutesName.parent,
+          (predicate) => false,
+        );
       } else {
         showSnackBarMessage(context, _signInController.errorMessage!, true);
       }
@@ -52,6 +56,20 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pushNamedAndRemoveUntil(context, AppRoutesName.parent, (pre) => false),
+            child: Text(
+              'Skip',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: AppColor.secondaryColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -69,7 +87,10 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
                     Text(AppStrings.signIn, style: textTheme.headlineMedium),
-                    Text(AppStrings.signInInstruction, style: textTheme.titleMedium,),
+                    Text(
+                      AppStrings.signInInstruction,
+                      style: textTheme.titleMedium,
+                    ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.03),
                     TextFormField(
                       controller: _emailTEController,
@@ -78,7 +99,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       decoration: InputDecoration(
                         labelText: AppStrings.email,
                         hintText: AppStrings.emailHint,
-                        prefixIcon: Icon(Icons.email,),
+                        prefixIcon: Icon(Icons.email),
                       ),
                       validator: InputValidators.emailValidator,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -94,12 +115,14 @@ class _SignInScreenState extends State<SignInScreen> {
                           decoration: InputDecoration(
                             labelText: AppStrings.password,
                             hintText: AppStrings.passwordHint,
-                            prefixIcon: Icon(Icons.lock,),
+                            prefixIcon: Icon(Icons.lock),
                             suffixIcon: IconButton(
-                              icon: Icon(controller.showConfirmPassword
+                              icon: Icon(
+                                controller.showConfirmPassword
                                     ? Icons.visibility
                                     : Icons.visibility_off_outlined,
-                                color: controller.showConfirmPassword
+                                color:
+                                    controller.showConfirmPassword
                                         ? AppColor.secondaryColor
                                         : AppColor.greyColor,
                               ),
@@ -109,7 +132,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           validator: InputValidators.passwordValidator,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                         );
-                      }
+                      },
                     ),
                     Align(
                       alignment: Alignment.centerRight,
@@ -129,13 +152,15 @@ class _SignInScreenState extends State<SignInScreen> {
                       builder: (controller) {
                         return Visibility(
                           visible: controller.signInInProgress == false,
-                          replacement: Center(child: const CircularProgressIndicator()),
+                          replacement: Center(
+                            child: const CircularProgressIndicator(),
+                          ),
                           child: ElevatedButton(
                             onPressed: _onTapSignIn,
                             child: Text(AppStrings.signIn),
                           ),
                         );
-                      }
+                      },
                     ),
                     SizedBox(height: AppSpacing.screenHeight(context) * 0.05),
                     RichText(
@@ -153,7 +178,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             recognizer:
                                 TapGestureRecognizer()
-                                  ..onTap = () => _signInController.onTapSignUp(),
+                                  ..onTap =
+                                      () => _signInController.onTapSignUp(),
                           ),
                         ],
                       ),

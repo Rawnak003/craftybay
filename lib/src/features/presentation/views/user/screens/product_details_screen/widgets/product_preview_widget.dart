@@ -11,10 +11,11 @@ import '../../../common_widget/custom_app_bar.dart';
 class ProductPreviewWidget extends StatelessWidget {
   const ProductPreviewWidget({
     super.key,
-    required ValueNotifier<int> currentSlider,
+    required ValueNotifier<int> currentSlider, required this.images,
   }) : _currentSlider = currentSlider;
 
   final ValueNotifier<int> _currentSlider;
+  final List<String> images;
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +43,17 @@ class ProductPreviewWidget extends StatelessWidget {
                   },
                 ),
                 items:
-                [1, 2, 3, 4].map((i) {
+                images.map((image) {
                   return Builder(
                     builder: (context) {
                       return Container(
                         width: AppSpacing.screenWidth(context),
                         margin: EdgeInsets.symmetric(horizontal: 2),
-                        color: AppColor.lightGreyColor,
-                        child: Image.asset(AppImages.shoeLogoPng),
+                        decoration: BoxDecoration(
+                          color: AppColor.lightGreyColor,
+                          image: DecorationImage(image: NetworkImage(image)),
+                        ),
+                        
                       );
                     },
                   );
@@ -65,7 +69,7 @@ class ProductPreviewWidget extends StatelessWidget {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < images.length; i++)
                           Container(
                             width: AppSpacing.screenWidth(context) * 0.03,
                             height: AppSpacing.screenWidth(context) * 0.03,
