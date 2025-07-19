@@ -9,7 +9,7 @@ class NetworkClient {
   final Logger _logger = Logger();
   final String _defaultErrorMessage = 'Something went wrong';
   final VoidCallback onUnauthorized;
-  final Map<String, String> headers;
+  final Map<String, String> Function() headers;
 
   NetworkClient({required this.onUnauthorized, required this.headers});
 
@@ -29,8 +29,8 @@ class NetworkClient {
   Future<NetworkResponse> getRequest({required String url}) async {
     try {
       Uri uri = Uri.parse(url);
-      _logRequest(url, null, headers);
-      Response response = await get(uri, headers: headers);
+      _logRequest(url, null, headers());
+      Response response = await get(uri, headers: headers());
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
@@ -41,8 +41,8 @@ class NetworkClient {
   Future<NetworkResponse> postRequest({required String url, required Map<String, dynamic> body}) async {
     try {
       Uri uri = Uri.parse(url);
-      _logRequest(url, body, headers);
-      Response response = await post(uri, headers: headers, body: jsonEncode(body));
+      _logRequest(url, body, headers());
+      Response response = await post(uri, headers: headers(), body: jsonEncode(body));
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
@@ -53,8 +53,8 @@ class NetworkClient {
   Future<NetworkResponse> putRequest({required String url, required Map<String, dynamic> body}) async {
     try {
       Uri uri = Uri.parse(url);
-      _logRequest(url, body, headers);
-      Response response = await put(uri, headers: headers, body: jsonEncode(body));
+      _logRequest(url, body, headers());
+      Response response = await put(uri, headers: headers(), body: jsonEncode(body));
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
@@ -65,8 +65,8 @@ class NetworkClient {
   Future<NetworkResponse> patchRequest({required String url, required Map<String, dynamic> body}) async {
     try {
       Uri uri = Uri.parse(url);
-      _logRequest(url, body, headers);
-      Response response = await patch(uri, headers: headers, body: jsonEncode(body));
+      _logRequest(url, body, headers());
+      Response response = await patch(uri, headers: headers(), body: jsonEncode(body));
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {
@@ -77,8 +77,8 @@ class NetworkClient {
   Future<NetworkResponse> deleteRequest({required String url, required Map<String, dynamic> body}) async {
     try {
       Uri uri = Uri.parse(url);
-      _logRequest(url, body, headers);
-      Response response = await delete(uri, headers: headers, body: jsonEncode(body));
+      _logRequest(url, body, headers());
+      Response response = await delete(uri, headers: headers(), body: jsonEncode(body));
       _logResponse(response);
       return _handleResponse(response);
     } catch (e) {

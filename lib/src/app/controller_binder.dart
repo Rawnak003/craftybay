@@ -50,7 +50,7 @@ class ControllerBinder extends Bindings {
         fenix: true,
       );
     }
-    Get.put(NetworkClient(onUnauthorized: _onUnauthorized, headers: _headers()));
+    Get.put(NetworkClient(onUnauthorized: _onUnauthorized, headers: () => _headers()));
   }
 
   void _onUnauthorized() {
@@ -61,7 +61,7 @@ class ControllerBinder extends Bindings {
   Map<String, String> _headers() {
     return {
       'content-Type': 'application/json',
-      'access-token': Get.find<AuthController>().accessToken ?? '',
+      'token': Get.find<AuthController>().accessToken ?? '',
     };
   }
 }

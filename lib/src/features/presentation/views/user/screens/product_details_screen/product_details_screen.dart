@@ -43,7 +43,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   }
 
   Future<void> _onTapAddToCart() async {
-    if (await Get.find<AuthController>().isLoggedIn()) {
+    if (await Get.find<AuthController>().isUserLoggedIn()) {
+      print(await Get.find<AuthController>().isUserLoggedIn());
       final bool result = await _addToCartController.addToCart(
         widget.productId,
       );
