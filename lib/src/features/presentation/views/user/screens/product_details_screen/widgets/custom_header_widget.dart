@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../../../../app/app_spacing.dart';
 import '../../../../../../../core/constants/colors.dart';
 import '../../../../../../../core/constants/strings.dart';
-import '../../../../../controller/user_controllers/item_counter_controller.dart';
+import '../../../../../controller/user_controllers/cart_list_controller.dart';
 import '../../../../../controller/user_controllers/product_screen_controller.dart';
 import '../../../common_widget/custom_action_button.dart';
 import '../../../common_widget/item_counter_widget.dart';
@@ -16,9 +16,6 @@ class CustomHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!Get.isRegistered<ItemCounterController>(tag: product.id)) {
-      Get.put(ItemCounterController(initialValue: 1), tag: product.id);
-    }
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,10 +63,10 @@ class CustomHeaderWidget extends StatelessWidget {
             ),
           ),
         ),
-        ItemCounterWidget(
-          id: product.id,
-          onChanged: (int value) {},
-        ),
+        ItemCounterWidget(onChange: (value) {
+          Get.find<CartListController>().updateQuantity(
+              product.id, value);
+        })
       ],
     );
   }

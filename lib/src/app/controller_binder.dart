@@ -2,6 +2,7 @@ import 'package:craftybay/src/core/routes/app_route_names.dart';
 import 'package:craftybay/src/core/services/network/network_client.dart';
 import 'package:craftybay/src/features/presentation/controller/authentication_controllers/auth_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/add_to_cart_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/cart_list_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/home_slider_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/new_product_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/popular_product_controller.dart';
@@ -42,6 +43,7 @@ class ControllerBinder extends Bindings {
     Get.put(ColorPickerController());
     Get.put(SizePickerController());
     Get.put(ProductScreenController());
+    Get.put(CartListController());
     Get.put(ReviewScreenController());
     for (int i = 0; i < 10; i++) {
       Get.lazyPut<ItemCounterController>(

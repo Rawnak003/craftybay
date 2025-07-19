@@ -1,16 +1,22 @@
+import 'package:craftybay/src/core/utils/snack_bar_message.dart';
+import 'package:craftybay/src/features/data/models/cart_item_model.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/delete_cart_item_controller.dart';
+import 'package:craftybay/src/features/presentation/views/user/common_widget/item_counter_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../../app/app_spacing.dart';
 import '../../../../../../../core/constants/colors.dart';
-import '../../../../../../../core/constants/images.dart';
-import '../../../common_widget/item_counter_widget.dart';
+import '../../../../../controller/user_controllers/cart_list_controller.dart';
 
 class CustomCartProductWidget extends StatelessWidget {
-  const CustomCartProductWidget({
-    super.key, required this.id,
+  CustomCartProductWidget({
+    super.key, required this.cartItemModel,
   });
 
-  final String id;
+  final CartItemModel cartItemModel;
+
+  final DeleteCartItemController _deleteCartItemController = DeleteCartItemController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +29,18 @@ class CustomCartProductWidget extends StatelessWidget {
             SizedBox(
               height: AppSpacing.screenWidth(context) * 0.25,
               width: AppSpacing.screenWidth(context) * 0.25,
-              child: Image.asset(
-                AppImages.shoeLogoPng,
+              child: cartItemModel.productModel.photoUrls.isNotEmpty
+                  ? Image.network(
+                cartItemModel.productModel.photoUrls.first,
+                errorBuilder: (_, __, ___) {
+                  return Center(
+                    child: Icon(Icons.error_outline),
+                  );
+                },
                 fit: BoxFit.contain,
+              )
+                  : Center(
+                child: Icon(Icons.image_not_supported, size: 32,),
               ),
             ),
             SizedBox(width: AppSpacing.screenWidth(context) * 0.04),
@@ -38,33 +53,45 @@ class CustomCartProductWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Nike Air Max 270',
-                        style: Theme.of(context,).textTheme.titleMedium?.copyWith(
-                          color: AppColor.darkGreyColor,
-                          fontSize: 18,
+                      SizedBox(
+                        width: 160,
+                        child: Text(
+                          cartItemModel.productModel.title,
+                          maxLines: 1,
+                          style: Theme.of(context,).textTheme.titleMedium?.copyWith(
+                            color: AppColor.darkGreyColor,
+                            fontSize: 18,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          bool isDeleted = await _deleteCartItemController.deleteCartItem(cartItemModel.id);
+                          if (isDeleted) {
+                            showSnackBarMessage(context, "Item deleted successfully!");
+                            Get.find<CartListController>().getCartItemList();
+                          } else {
+                            showSnackBarMessage(context, _deleteCartItemController.errorMessage ?? "Failed to delete item");
+                          }
+                        },
                         icon: Icon(
                           Icons.delete_outline_rounded,
                           color: AppColor.darkGreyColor,
                         ),
-                      ),
+                      )
                     ],
                   ),
-                  Text('Color: Black, Size: L', style: Theme.of(context,).textTheme.bodyMedium?.copyWith(color: AppColor.darkGreyColor,),),
+                  if (cartItemModel.color != null && cartItemModel.size != null) Text('Color: Black, Size: L', style: Theme.of(context,).textTheme.bodyMedium?.copyWith(color: AppColor.darkGreyColor,),),
                   SizedBox(height: AppSpacing.screenHeight(context) * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('\$200', style: Theme.of(context,).textTheme.titleMedium?.copyWith(fontSize: 20, color: AppColor.themeColor,),),
-                      ItemCounterWidget(
-                        id: id,
-                        onChanged: (value) {
-                        },
-                      ),
+                      Text('\$${cartItemModel.productModel.currentPrice}', style: Theme.of(context,).textTheme.titleMedium?.copyWith(fontSize: 20, color: AppColor.themeColor,),),
+                      ItemCounterWidget(onChange: (value) {
+                        Get.find<CartListController>().updateQuantity(
+                            cartItemModel.id, value);
+                      })
                     ],
                   )
                 ],

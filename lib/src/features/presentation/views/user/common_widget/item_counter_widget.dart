@@ -1,42 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../../../app/app_spacing.dart';
+
 import '../../../../../core/constants/colors.dart';
-import '../../../controller/user_controllers/item_counter_controller.dart';
-import 'custom_action_button.dart';
 
-class ItemCounterWidget extends StatelessWidget {
-  final Function(int) onChanged;
-  final String id;
+class ItemCounterWidget extends StatefulWidget {
+  const ItemCounterWidget({super.key, required this.onChange});
 
-  const ItemCounterWidget({
-    super.key,
-    required this.onChanged,
-    required this.id,
-  });
+  final Function(int) onChange;
+
+  @override
+  State<ItemCounterWidget> createState() => _ItemCounterWidgetState();
+}
+
+class _ItemCounterWidgetState extends State<ItemCounterWidget> {
+  int value = 1;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ItemCounterController>(tag: id);
-
-    controller.value.listen((val) => onChanged(val));
-
-    return Obx(() => Row(
+    return Row(
       children: [
-        CustomActionButton(
-          iconData: Icons.remove,
-          backgroundColor: AppColor.lightThemeColor,
-          onTap: controller.decrement,
+        _buildIconButton(
+          onTap: () {
+            if (value <= 1) return;
+            value--;
+            setState(() {});
+            widget.onChange(value);
+          },
+          icon: Icons.remove,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.verticalPadding),
-          child: Text('${controller.value.value}'),
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          child: Text('$value', style: TextStyle(fontSize: 18)),
         ),
-        CustomActionButton(
-          iconData: Icons.add,
-          onTap: controller.increment,
+        _buildIconButton(
+          onTap: () {
+            if (value >= 20) return;
+            value++;
+            setState(() {});
+            widget.onChange(value);
+          },
+          icon: Icons.add,
         ),
       ],
-    ));
+    );
+  }
+
+  Widget _buildIconButton({
+    required VoidCallback onTap,
+    required IconData icon,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: AppColor.themeColor,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Icon(icon, size: 18, color: Colors.white),
+      ),
+    );
   }
 }

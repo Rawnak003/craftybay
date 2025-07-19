@@ -11,4 +11,7 @@ class AppUrls {
   static String getProductsByTagUrl(String tag) => '$_baseUrl/products?tag=$tag';
   static String getProductDetailsByIdUrl(String productId) => '$_baseUrl/products/id/$productId';
   static const String addToCartUrl = '$_baseUrl/cart';
+  static const String getCartItemListUrl = '$_baseUrl/cart';
+
+  static String deleteCartItemByIdUrl(String productId) => '$_baseUrl/cart/$productId';
 }
