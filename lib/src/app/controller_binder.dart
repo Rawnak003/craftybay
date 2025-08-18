@@ -5,6 +5,7 @@ import 'package:craftybay/src/features/presentation/controller/user_controllers/
 import 'package:craftybay/src/features/presentation/controller/user_controllers/cart_list_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/home_slider_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/new_product_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/payment_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/popular_product_controller.dart';
 import 'package:craftybay/src/features/presentation/controller/user_controllers/special_product_controller.dart';
 import 'package:get/get.dart';
@@ -45,6 +46,7 @@ class ControllerBinder extends Bindings {
     Get.put(ProductScreenController());
     Get.put(CartListController());
     Get.put(ReviewScreenController());
+    Get.put(PaymentController());
     for (int i = 0; i < 10; i++) {
       Get.lazyPut<ItemCounterController>(
         () => ItemCounterController(initialValue: 1),

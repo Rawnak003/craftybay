@@ -1,5 +1,6 @@
 
 import 'package:craftybay/src/features/presentation/controller/user_controllers/cart_list_controller.dart';
+import 'package:craftybay/src/features/presentation/controller/user_controllers/payment_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -82,15 +83,19 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  CustomBottomButton _buildPriceAndCheckOutSection(BuildContext context) {
+  Widget _buildPriceAndCheckOutSection(BuildContext context) {
     return CustomBottomButton(
       title: 'Total Price',
       subtext: '\$ ${_cartListController.totalPrice}',
       button: SizedBox(
         width: AppSpacing.screenWidth(context) * 0.3,
-        child: ElevatedButton(
-          onPressed: () {}, //TODO: Add functionality to checkout
-          child: Text(AppStrings.checkout),
+        child: GetBuilder<PaymentController>(
+          builder: (controller) {
+            return ElevatedButton(
+              onPressed: () => controller.payment(),
+              child: Text(AppStrings.checkout),
+            );
+          }
         ),
       ),
     );
