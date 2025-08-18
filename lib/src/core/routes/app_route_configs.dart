@@ -1,12 +1,14 @@
+import 'package:craftybay/src/features/data/models/category_model.dart';
 import 'package:flutter/material.dart';
-import '../../features/authentication/screens/sign_in_screen/presentation/views/sign_in_screen.dart';
-import '../../features/authentication/screens/sign_up_screen/presentation/views/sign_up_screen.dart';
-import '../../features/onboarding/screens/create_review_screen/presentation/views/create_review_screen.dart';
-import '../../features/onboarding/screens/parent_screen/presentation/views/main_bottom_nav_bar_screen.dart';
-import '../../features/onboarding/screens/product_list_screen/presentation/product_list_screen.dart';
-import '../../features/onboarding/screens/product_screen/presentation/views/product_screen.dart';
-import '../../features/onboarding/screens/review_screen/presentation/views/review_screen.dart';
-import '../../features/splash/presentation/view/splash_screen.dart';
+import '../../features/presentation/views/authentication/screens/otp_verify_screen.dart';
+import '../../features/presentation/views/authentication/screens/sign_in_screen.dart';
+import '../../features/presentation/views/authentication/screens/sign_up_screen.dart';
+import '../../features/presentation/views/splash/splash_screen.dart';
+import '../../features/presentation/views/user/screens/create_review_screen/create_review_screen.dart';
+import '../../features/presentation/views/user/screens/parent_screen/main_bottom_nav_bar_screen.dart';
+import '../../features/presentation/views/user/screens/product_details_screen/product_details_screen.dart';
+import '../../features/presentation/views/user/screens/product_list_screen/product_list_screen.dart';
+import '../../features/presentation/views/user/screens/review_screen/review_screen.dart';
 import 'app_route_names.dart';
 
 class AppRouteConfigs {
@@ -24,18 +26,24 @@ class AppRouteConfigs {
         return MaterialPageRoute(
           builder: (context) => const SignUpScreen(),
         );
+      case AppRoutesName.verifyOtp:
+        final String email = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => OtpVerificationScreen(email: email,),
+        );
       case AppRoutesName.parent:
         return MaterialPageRoute(
           builder: (context) => MainBottomNavBarScreen(),
         );
       case AppRoutesName.productList:
-        final categoryTitle = settings.arguments as String;
+        final category = settings.arguments as CategoryModel;
         return MaterialPageRoute(
-          builder: (context) => ProductListScreen(categoryTitle: categoryTitle),
+          builder: (context) => ProductListScreen(category: category),
         );
-      case AppRoutesName.product:
+      case AppRoutesName.productDetails:
+        final productId = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => ProductScreen(),
+          builder: (context) => ProductDetailsScreen(productId: productId,),
         );
       case AppRoutesName.reviews:
         return MaterialPageRoute(
